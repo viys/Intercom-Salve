@@ -14,6 +14,9 @@ extern THREAD_ATTR_S threadAttr;
 
 extern THREAD_HANDLE AppTaskStartThreadH;
 
+/* 互斥锁 */
+extern  EVENT_HANDLE rs485EH;
+
 /* 线程指针配置函数 */
 THREAD_ATTR_S* KING_Thread_Config(THREAD_ENTRY_FUN fun,void* param,THREAD_PRIORIT_E priority,uint32 stackSize);
 /* 线程高级配置函数 */

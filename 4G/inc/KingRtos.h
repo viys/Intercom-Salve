@@ -4,13 +4,13 @@
 #include "KingDef.h"
 
 // Event/Msg Wait option.
-#define WAIT_OPT_NO_WAIT        0x0          // ²»µÈ´ý
-#define WAIT_OPT_INFINITE       0xFFFFFFFF   // ÓÀ¾ÃµÈ´ý
+#define WAIT_OPT_NO_WAIT        0x0          // ï¿½ï¿½ï¿½?ï¿½
+#define WAIT_OPT_INFINITE       0xFFFFFFFF   // ï¿½ï¿½ï¿½ï¿½?ï¿½
 
 typedef void (*THREAD_ENTRY_FUN)(void* param);
 typedef void (*TIMER_FUN)(uint32 tmrId);
 
-//threadÓÅÏÈ¼¶¶¨Òå£¬ÊýÖµÔ½Ð¡£¬ÓÅÏÈ¼¶Ô½¸ß
+//threadï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½???ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½
 typedef enum
 {
     THREAD_PRIORIT1 = 1,  
@@ -45,273 +45,273 @@ typedef struct
 
 typedef struct
 {
-    TIMER_FUN timer_fun; ///< ¶¨Ê±Æ÷µ½ÆÚ»Øµ÷º¯Êý
-    uint32 timeout; ///< ¶¨Ê±Æ÷µ¹¼ÆÊ±¼ä£¬µ¥Î»ms
-    bool isPeriod; ///< ÊÇ·ñÖÜÆÚÐÔÆô¶¯¶¨Ê±Æ÷¡£
+    TIMER_FUN timer_fun; ///< ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½
+    uint32 timeout; ///< ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½?ms
+    bool isPeriod; ///< ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
 }TIMER_ATTR_S;
 
 
 
 /**
- * ´´½¨Ïß³Ì
+ * ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½
  *
- * @param[in]  pName ¸ø¶¨Ïß³ÌÃû×Ö
- * @param[in]  pAttr Ïß³ÌÏà¹Ø²ÎÊý Èç ¶ÑÕ»¡¢ÓÅÏÈ¼¶¡¢Èë¿Úº¯Êý
-               ÓÅÏÈ¼¶¶¨Òå¼ûTHREAD_PRIORIT_E£¬ÊýÖµÔ½Ð¡ÓÅÏÈ¼¶Ô½¸ß
- * @param[out] pThreadID ¸ø³öÏß³ÌµÄID
+ * @param[in]  pName ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param[in]  pAttr ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½
+               ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½THREAD_PRIORIT_Eï¿½ï¿½ï¿½ï¿½???ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½
+ * @param[out] pThreadID ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ID
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_ThreadCreate(char* pName, THREAD_ATTR_S* pAttr,THREAD_HANDLE* pThreadID);
 
 /**
- * ÍË³öµ±Ç°Ïß³Ì
- * Ïß³ÌÍË³ö½¨ÒéÊ¹ÓÃÕâÖÖ·½Ê½£¬Í¬Ê±ÍË³ö×îºÃµ÷ÓÃÕâ¸öº¯Êý£¬±ÜÃâ×ÊÔ´Ð¹Â¶
+ * ï¿½?ï¿½ï¿½ï¿½?ï¿½?ï¿½
+ * ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½??ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_ThreadExit(void);
 
 /**
- * ÖÕÖ¹Ö¸¶¨Ïß³Ì
- * ²»ÍÆ¼öÊ¹ÓÃÕâÖÖ·½Ê½ÖÕÖ¹Ïß³Ì£¬ÒòºÜÄÑÈ·±£±»ÖÕÖ¹µÄÏß³Ìµ±Ç°Ã»ÓÐÕ¼ÓÃËø×ÊÔ´µÈ£¬ÈÝÒ×²úÉúÎÊÌâ
- * @param[in]  threadID ÐèÒªÖÕÖ¹µÄÏß³ÌID
+ * ï¿½ï¿½??ï¿½ï¿½ï¿½?ï¿½
+ * ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½?ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½??ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param[in]  threadID ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½ID
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_ThreadTerminate(THREAD_HANDLE threadID);
 
 /**
- * »ñÈ¡µ±Ç°Ïß³ÌID
+ * ï¿½ï¿½?ï¿½ï¿½?ï¿½?ï¿½ID
  *
- * @param[out]  pThreadID µ±Ç°Ïß³ÌID
+ * @param[out]  pThreadID ï¿½ï¿½?ï¿½?ï¿½ID
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_ThreadIdCurrentGet(THREAD_HANDLE* pThreadID);
 
 /**
- * »ñÈ¡µ±Ç°Ïß³ÌÓÅÏÈ¼¶
+ * ï¿½ï¿½?ï¿½ï¿½?ï¿½?ï¿½ï¿½ï¿½ï¿½?ï¿½
  *
- * @param[out]  pPriority µ±Ç°Ïß³ÌÓÅÏÈ¼¶
+ * @param[out]  pPriority ï¿½ï¿½?ï¿½?ï¿½ï¿½ï¿½ï¿½?ï¿½
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_ThreadPriorityCurrentGet(uint32* pPriority);
 
 /**
- * ÉèÖÃÏß³ÌÓÅÏÈ¼¶
+ * ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½?ï¿½
  *
- * @param[in]  threadID ÐèÒªÉè¶¨ÓÅÏÈ¼¶µÄÏß³ÌID
- * @param[in]  Priority ÓÅÏÈ¼¶ 1-255 1×î¸ßÓÅÏÈ¼¶
+ * @param[in]  threadID ï¿½ï¿½?ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½?ï¿½ID
+ * @param[in]  Priority ï¿½ï¿½ï¿½?ï¿½ 1-255 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_ThreadPrioritySet(THREAD_HANDLE threadID, uint32 Priority);
 
 /**
- * Ïß³Ì¼ÌÐø
- * Ïß³Ì´Ó¹ÒÆð(suspend)×´Ì¬ÖØÐÂ½øÈëready
- * @param[in]  threadID Ïß³ÌID
+ * ï¿½??ï¿½ï¿½ï¿½
+ * ï¿½???ï¿½ï¿½ï¿½(suspend)??ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ready
+ * @param[in]  threadID ï¿½?ï¿½ID
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_ThreadResume(THREAD_HANDLE threadID);
 
 /**
- * Ïß³Ì¹ÒÆð
- * Ïß³Ì½øÈë¹ÒÆð(suspend)×´Ì¬
- * @param[in]  threadID Ïß³ÌID
+ * ï¿½??ï¿½ï¿½ï¿½
+ * ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(suspend)??
+ * @param[in]  threadID ï¿½?ï¿½ID
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_ThreadSuspend(THREAD_HANDLE threadID);
 
 /**
- * Ïß³Ì¹ÒÆðÒ»¶ÎÖ´ÐÐÊ±¼ä
- * Ïß³Ì½øÈë¹ÒÆð(suspend)×´Ì¬£¬timeMsºó»Ö¸´ready×´Ì¬
- * @param[in]  timeMs Ê±¼äms
+ * ï¿½??ï¿½ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
+ * ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(suspend)??ï¿½ï¿½timeMsï¿½ï¿½?ï¿½ready??
+ * @param[in]  timeMs ?ï¿½ï¿½ms
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_Sleep(uint32 timeMs);
 
 /**
- * ´´½¨»¥³âËø
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
- * @param[in]  name »¥³âËøÃû×Ö
- * @param[in]  inherit ÓÅÏÈ¼¶¼Ì³Ð 0-²»Ö§³Ö 1-Ö§³Ö
- * @param[out]  pMutex »¥³âËøhandle
+ * @param[in]  name ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param[in]  inherit ï¿½ï¿½ï¿½?ï¿½ï¿½?ï¿½ 0-ï¿½ï¿½?ï¿½ï¿½ 1-?ï¿½ï¿½
+ * @param[out]  pMutex ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½handle
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_MutexCreate(const char* name, uint32 inherit, MUTEX_HANDLE* pMutex);
 
 /**
- * »ñÈ¡»¥³âËø
+ * ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
- * @param[in]  mutex »¥³âËøhandle
- * @param[in]  timeout ³¬Ê±Ê±¼ä, µ¥Î»ms
- * @return 0 SUCCESS (³É¹¦»ñÈ¡µ½Ëø)  -1 FAIL
+ * @param[in]  mutex ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½handle
+ * @param[in]  timeout ï¿½ï¿½??ï¿½ï¿½, ï¿½ï¿½?ms
+ * @return 0 SUCCESS (ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½)  -1 FAIL
  */
 int KING_MutexLock(MUTEX_HANDLE mutex, uint32 timeout);
 
 /**
- * ÊÍ·Å»¥³âËø
+ * ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½
  *
- * @param[in]  mutex »¥³âËøhandle
+ * @param[in]  mutex ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½handle
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_MutexUnLock(MUTEX_HANDLE mutex);
 
  /**
- * É¾³ý»¥³âËø
+ * ?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
- * @param[in]  mutex »¥³âËøhandle
+ * @param[in]  mutex ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½handle
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_MutexDelete(MUTEX_HANDLE mutex);
 
  /**
-  * ´´½¨¼ÆÊýÐÅºÅÁ¿
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½
   *
-  * @param[in]  name ÐÅºÅÁ¿Ãû×Ö
-  * @param[in]  init_count ÐÅºÅÁ¿³õÊ¼¼ÆÊý
-  * @param[out] pSem ÐÅºÅÁ¿handle
+  * @param[in]  name ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param[in]  init_count ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
+  * @param[out] pSem ï¿½?ï¿½ï¿½ï¿½handle
   * @return 0 SUCCESS  -1 FAIL
   */
 int KING_SemCreate(const char* name, uint32 init_count, SEM_HANDLE* pSem);
 
   /**
-  * »ñÈ¡¼ÆÊýÐÅºÅÁ¿
-  * ³É¹¦»ñÈ¡ºó¼ÆÊý¼õÒ»
-  * @param[in]  sem ÐÅºÅÁ¿handle
-  * @param[in]  timeout µÈ´ýÊ±¼ä£¬µ¥Î»ms
-  * @return 0 SUCCESS(³É¹¦»ñÈ¡µ½ÐÅºÅÁ¿)  -1 FAIL
+  * ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½
+  * ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+  * @param[in]  sem ï¿½?ï¿½ï¿½ï¿½handle
+  * @param[in]  timeout ï¿½?ï¿½?ï¿½?ï¿½ï¿½?ms
+  * @return 0 SUCCESS(ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½)  -1 FAIL
   */
 int KING_SemGet(SEM_HANDLE sem, uint32 timeout);
 
   /**
-  * ÊÍ·Å¼ÆÊýÐÅºÅÁ¿
-  * ³É¹¦ÊÍ·Åºó¼ÆÊý¼ÓÒ»
-  * @param[in]  sem ÐÅºÅÁ¿handle
+  * ï¿½??ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½
+  * ï¿½?ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+  * @param[in]  sem ï¿½?ï¿½ï¿½ï¿½handle
   * @return 0 SUCCESS  -1 FAIL
   */
 int KING_SemPut(SEM_HANDLE sem);
 
   /**
-  * É¾³ý¼ÆÊýÐÅºÅÁ¿
+  * ?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½
   *
-  * @param[in]  sem ÐÅºÅÁ¿handle
+  * @param[in]  sem ï¿½?ï¿½ï¿½ï¿½handle
   * @return 0 SUCCESS  -1 FAIL
   */
 int KING_SemDelete(SEM_HANDLE sem);
 
   /**
-  * ´´½¨ÊÂ¼þ
+  * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   *
-  * @param[in]    name ÊÂ¼þÃû×Ö
-  * @param[out] pEvent ÊÂ¼þhandle
+  * @param[in]    name ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param[out] pEvent ï¿½ï¿½ï¿½handle
   * @return 0 SUCCESS    -1 FAIL
   */
 int KING_EventCreate(const char* name, EVENT_HANDLE* pEvent);
 
 /**
-* ±êÖ¾ÊÂ¼þ²úÉú
+* ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *
-* @param[in] event ÊÂ¼þhandle
+* @param[in] event ï¿½ï¿½ï¿½handle
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_EventSet(EVENT_HANDLE event);
 
 /**
-* É¾³ýÊÂ¼þ
+* ?ï¿½ï¿½ï¿½ï¿½ï¿½
 *
-* @param[in] event ÊÂ¼þhandle
+* @param[in] event ï¿½ï¿½ï¿½handle
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_EventDelete(EVENT_HANDLE event);
 
 /**
-* »ñÈ¡ÊÂ¼þ
-* timeoutÊ±¼äµ¥Î»Îªms¡£ÓÐÁ½¸öÌØÊâÖµ£¬·Ö±ðÎª£º
-* WAIT_OPT_NO_WAIT ºÍ WAIT_OPT_INFINITE
+* ï¿½ï¿½?ï¿½ï¿½ï¿½
+* timeout?ï¿½???msï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½
+* WAIT_OPT_NO_WAIT ï¿½ï¿½ WAIT_OPT_INFINITE
 *
-* @param[in] event ÊÂ¼þhandle
-* @param[in] clearFlag »ñÈ¡µ½ÊÂ¼þºóÊÇ·ñÇå³ý¸ÃÊÂ¼þ 0-²»Çå³ý 1-Çå³ý
-* @param[in] timeout µÈ´ýÊ±¼ä, µ¥Î»ms
-* @return 0 SUCCESS(³É¹¦»ñÈ¡µ½ÊÂ¼þ)   -1 FAIL
+* @param[in] event ï¿½ï¿½ï¿½handle
+* @param[in] clearFlag ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0-ï¿½ï¿½ï¿½ï¿½ï¿½ 1-ï¿½ï¿½ï¿½
+* @param[in] timeout ï¿½?ï¿½?ï¿½ï¿½, ï¿½ï¿½?ms
+* @return 0 SUCCESS(ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½)   -1 FAIL
 */
 int KING_EventGet(EVENT_HANDLE event, uint32 clearFlag, uint32 timeout);
 
 /**
-* ´´½¨ÏûÏ¢¶ÓÁÐ
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
 *
-* @param[out] pHandle ÏûÏ¢¶ÓÁÐhandle
+* @param[out] pHandle ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½handle
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_MsgCreate(MSG_HANDLE* pHandle);
 
 /**
-* ·¢ËÍÏûÏ¢
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
 *
-* @param[in] pMsg ÏûÏ¢ÊµÌåÖ¸Õë
-* @param[in] handle ½ÓÊÕ·½ÏûÏ¢¶ÓÁÐhandle
+* @param[in] pMsg ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½
+* @param[in] handle ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½handle
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_MsgSend(MSG_S* pMsg, MSG_HANDLE handle);
 
 /**
-* ½ÓÊÕÏûÏ¢.
-* timeoutÊ±¼äµ¥Î»Îªms¡£ÓÐÁ½¸öÌØÊâÖµ£¬·Ö±ðÎª£º
-* WAIT_OPT_NO_WAIT ºÍ WAIT_OPT_INFINITE
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?.
+* timeout?ï¿½???msï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½?ï¿½ï¿½
+* WAIT_OPT_NO_WAIT ï¿½ï¿½ WAIT_OPT_INFINITE
 *
-* @param[in] pMsg ÏûÏ¢ÊµÌåÖ¸Õë
-* @param[in] handle ÏûÏ¢¶ÓÁÐhandle
-* @param[in] timeout ³¬Ê±Ê±¼ä£¬µ¥Î»ms
-* @return 0 SUCCESS(³É¹¦»ñÈ¡µ½ÊÂ¼þ)   -1 FAIL
+* @param[in] pMsg ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½
+* @param[in] handle ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½handle
+* @param[in] timeout ï¿½ï¿½??ï¿½?ï¿½ï¿½?ms
+* @return 0 SUCCESS(ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½)   -1 FAIL
 */
 int KING_MsgRcv(MSG_S* pMsg, MSG_HANDLE handle, uint32 timeout);
 
 /**
-* É¾³ýÏûÏ¢¶ÓÁÐ
+* ?ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
 *
-* @param[in] handle ÏûÏ¢¶ÓÁÐhandle
+* @param[in] handle ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½handle
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_MsgDelete(MSG_HANDLE handle);
 
 /**
-* ÄÚ´æÉêÇë
-* @param[in]  pMem ÉêÇëµ½µÄµØÖ·Ö¸ÕëµÄÖ¸Õë
-* @param[in]  size ÒªÉêÇëµÄÄÚ´æ´óÐ¡
+* ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½
+* @param[in]  pMem ï¿½ï¿½ï¿½?ï¿½?ï¿½??ï¿½ï¿½ï¿½?ï¿½ï¿½
+* @param[in]  size ?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½?
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_MemAlloc(void** pMem, uint32 size);
 
 /**
-* ÄÚ´æÊÍ·Å
-* @param[in]  pMem ÒªÊÍ·ÅµÄµØÖ·Ö¸Õë
+* ï¿½?ï¿½ï¿½?ï¿½
+* @param[in]  pMem ?ï¿½???ï¿½??ï¿½ï¿½
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_MemFree(void* pMem);
 
 
 /**
-* ¶¨Ê±Æ÷´´½¨
-* @param[out]  pTimer ´´½¨µÄtimer id
+* ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* @param[out]  pTimer ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½timer id
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_TimerCreate(TIMER_HANDLE* pTimer);
 
 /**
-* ¶¨Ê±Æ÷¼¤»î
-* @param[in]  Timer Òª¼¤»îµÄtimer id
-* @param[in]  pCfg Òª¼¤»îtimerµÄÏà¹Ø²ÎÊýÅäÖÃ
+* ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* @param[in]  Timer ?ï¿½ï¿½ï¿½ï¿½ï¿½timer id
+* @param[in]  pCfg ?ï¿½ï¿½ï¿½ï¿½timerï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_TimerActive(TIMER_HANDLE Timer, TIMER_ATTR_S* pCfg);
 
 /**
-* ¶¨Ê±Æ÷È¥¼¤»î
-* @param[in]  Timer È¥¼¤»îµÄtimer id
+* ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
+* @param[in]  Timer ?ï¿½ï¿½ï¿½ï¿½ï¿½timer id
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_TimerDeactive(TIMER_HANDLE Timer);
 
 /**
-* ¶¨Ê±Æ÷É¾³ý
-* @param[in]  Timer ÒªÉ¾³ýµÄtimer id
+* ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
+* @param[in]  Timer ??ï¿½ï¿½ï¿½ï¿½timer id
 * @return 0 SUCCESS   -1 FAIL
 */
 int KING_TimerDelete(TIMER_HANDLE Timer);

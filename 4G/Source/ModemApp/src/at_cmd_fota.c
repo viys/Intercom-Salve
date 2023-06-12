@@ -24,7 +24,7 @@
 #define FAIL                           -1
 #define FOTA_CID                        1
 
-//×Ö·û´®Ààºê¶¨Òå
+//å­—ç¬¦ä¸²ç±»å®å®šä¹‰
 #define HW_VERSION                     "1.00"
 #define MODEL                          "LA1104-3"
 #define MANUFACTURE                    "CZ"
@@ -35,7 +35,7 @@
 #define CZ_FOTA_SERVER_HOSTNAME        "fotav3.cheerzing.com"
 #define CZ_FOTA_SERVER_PORT            23177
 
-//´ò°üÒªÓÃµ½µÄ¸÷ÖÖÊı¾İµÄ³¤¶Èºê
+//æ‰“åŒ…è¦ç”¨åˆ°çš„å„ç§æ•°æ®çš„é•¿åº¦å®
 #define CZ_APP_MAGIC_LEN               8
 #define CZ_TERMINAL_ID_LEN             8
 #define CZ_MANUFACTURE_LEN             8
@@ -48,7 +48,7 @@
 #define CZ_FOTA_PROTOCOL_VER           0x10
 #define CZ_FOTA_PACKAGE_MAXLEN         (CZ_FOTA_PACKAGE_DATALEN + 128)
 
-//FotaTaskÖĞÓÃµ½µÄMessage ID
+//FotaTaskä¸­ç”¨åˆ°çš„Message ID
 #define EV_CZ_FOTA_CONNECT_REQ         0
 #define EV_CZ_FOTA_SOCKET_CONNECT_RSP  1
 #define EV_CZ_FOTA_SOCKET_WRITE_REQ    2
@@ -58,14 +58,14 @@
 #define EV_CZ_FOTA_EXIT_REQ            6
 #define EV_CZ_FOTA_REBOOT_REQ          7
 
-//NVÏà¹ØµÄºê¶¨Òå
+//NVç›¸å…³çš„å®å®šä¹‰
 #define CZ_FOTA_INDEX_PS               0
 #define CZ_FOTA_INDEX_KINGAPP          1
 #define CZ_FOTA_INDEX_BOOTAPP          2
 #define CZ_FOTA_NUM                    3
 #define CZ_FOTA_NV_ID                  0
 
-//FotaĞ­Òé±¨ÎÄÖĞµÄÉÏÏÂĞĞCmd ID
+//Fotaåè®®æŠ¥æ–‡ä¸­çš„ä¸Šä¸‹è¡ŒCmd ID
 #define CZ_FOTA_CMD_CHECKUPDATE_REQ    0x8001
 #define CZ_FOTA_CMD_CHECKUPDATE_RSP    0x8002
 #define CZ_FOTA_CMD_GETFILEINFO_REQ    0x8003
@@ -76,7 +76,7 @@
 #define CZ_FOTA_CMD_REPORTRESULT_RSP   0x8008
 #define CZ_FOTA_CMD_ABNORAML_RSP       0x8100
 
-//FotaÏÂÔØ´íÎóÂë
+//Fotaä¸‹è½½é”™è¯¯ç 
 #define ERR_AT_CME_CZFOTA_ILLEGAL_PARAM                 6010
 #define ERR_AT_CME_CZFOTA_OPERATE_NOT_ALLOWED           6011
 #define ERR_AT_CME_CZFOTA_DNS_ANALYZE_FAIL              6012
@@ -89,7 +89,7 @@
 #define ERR_AT_CME_CZFOTA_GET_FILE_SIZE                 6019
 #define ERR_AT_CME_CZFOTA_READ_FILE                     6020
 #define ERR_AT_CME_CZFOTA_NO_IMG_TO_UPDATE              6021
-#define ERR_AT_CME_CZFOTA_IMG_ERROR                     6022    //´íÎóµÄ¹Ì¼ş°ü
+#define ERR_AT_CME_CZFOTA_IMG_ERROR                     6022    //é”™è¯¯çš„å›ºä»¶åŒ…
 
 
 #define CZFOTA_LOG(fmt, ...) \
@@ -151,11 +151,11 @@ typedef enum
 
 typedef enum
 {
-    CZ_FOTA_COMPLETE,     //Éı¼¶ÈÎÎñ½áÊø£¬ÒÑ¾­ÉÏ±¨Æ½Ì¨£¬µÈ´ıÏÂÒ»´ÎFOTAÈÎÎñ
-    CZ_FOTA_NEEDDOWNLOAD, //¼ì²âµ½¸üĞÂ£¬ĞèÒªÏÂÔØ
-    //CZ_FOTA_NEEDUPGRADE,  //ÒÑ¾­ÏÂÔØ¹Ì¼ş£¬ĞèÒªÉı¼¶
-    //CZ_FOTA_NEEDREPORT,   //ÒÑ¾­Éı¼¶³É¹¦»òÊ§°Ü£¬ĞèÒªÉÏ±¨Æ½Ì¨
-    //CZ_FOTA_NEEDCHECK,    //ĞèÒª·¢Æğ¸üĞÂ¼ì²â
+    CZ_FOTA_COMPLETE,     //å‡çº§ä»»åŠ¡ç»“æŸï¼Œå·²ç»ä¸ŠæŠ¥å¹³å°ï¼Œç­‰å¾…ä¸‹ä¸€æ¬¡FOTAä»»åŠ¡
+    CZ_FOTA_NEEDDOWNLOAD, //æ£€æµ‹åˆ°æ›´æ–°ï¼Œéœ€è¦ä¸‹è½½
+    //CZ_FOTA_NEEDUPGRADE,  //å·²ç»ä¸‹è½½å›ºä»¶ï¼Œéœ€è¦å‡çº§
+    //CZ_FOTA_NEEDREPORT,   //å·²ç»å‡çº§æˆåŠŸæˆ–å¤±è´¥ï¼Œéœ€è¦ä¸ŠæŠ¥å¹³å°
+    //CZ_FOTA_NEEDCHECK,    //éœ€è¦å‘èµ·æ›´æ–°æ£€æµ‹
     CZ_FOTA_MAX
 }CZ_FOTA_NV_STATE_E;
 
@@ -177,10 +177,10 @@ typedef enum
 
 typedef enum
 {
-    CZ_AT_FOTA_CHKINIT,     //Î´²éÑ¯
-    CZ_AT_FOTA_CHKING,      //²éÑ¯ÖĞ
-    CZ_AT_FOTA_CHKFAIL,     //²éÑ¯Ê§°Ü£¬ÍøÂçÔ­Òò»òDNS½âÎöÊ§°Ü
-    CZ_AT_FOTA_CHKDONE      //²éÑ¯Íê±Ï
+    CZ_AT_FOTA_CHKINIT,     //æœªæŸ¥è¯¢
+    CZ_AT_FOTA_CHKING,      //æŸ¥è¯¢ä¸­
+    CZ_AT_FOTA_CHKFAIL,     //æŸ¥è¯¢å¤±è´¥ï¼Œç½‘ç»œåŸå› æˆ–DNSè§£æå¤±è´¥
+    CZ_AT_FOTA_CHKDONE      //æŸ¥è¯¢å®Œæ¯•
 } CZ_AT_FOTA_STATE_E;
 
 /**************************Structure Definitions*******************************/
@@ -297,7 +297,7 @@ typedef struct
 typedef struct
 {
     uint32  FileId;
-    uint32  Status; //FOTAÉı¼¶×´Ì¬: 0Éı¼¶Ê§°Ü£¬1ÒÑÉı¼¶£¬2ÏÂÔØÍê³É£¬3ÏÂÔØÒì³£
+    uint32  Status; //FOTAå‡çº§çŠ¶æ€: 0å‡çº§å¤±è´¥ï¼Œ1å·²å‡çº§ï¼Œ2ä¸‹è½½å®Œæˆï¼Œ3ä¸‹è½½å¼‚å¸¸
     uint8   FileVerMajor;
     uint8   FileVerMinor;
 }CZ_FOTA_FILE_STATUS_IND_S;
@@ -313,14 +313,14 @@ typedef struct
     CZ_FOTA_DL_STATE_E  dl_state;
     uint8               dl_progress;
     uint32              dl_errorcode;
-    int8                dl_file_vaild; //ÏÂÔØµÄ°üÊÇ·ñÕıÈ·£¬ÊÇ·ñÄÜÍ¨¹ıĞ£Ñé¡£
+    int8                dl_file_vaild; //ä¸‹è½½çš„åŒ…æ˜¯å¦æ­£ç¡®ï¼Œæ˜¯å¦èƒ½é€šè¿‡æ ¡éªŒã€‚
 }CZ_FOTA_DL_STAT_S;
 
 typedef struct tagTEACTX 
 { 
     uint8 buf[8] ; 
     uint8 bufPre[8] ; 
-    const uint8 *pKey ; //Ö¸Ïò16×Ö½ÚµÄkey
+    const uint8 *pKey ; //æŒ‡å‘16å­—èŠ‚çš„key
     uint8 *pCrypt ; 
     uint8 *pCryptPre ; 
 } CZ_TEACTX, *CZ_LPTEACTX ;
@@ -341,7 +341,7 @@ static void CZ_FotaSetState(CZ_FOTA_STATE_E state);
 static int32 CZ_FotaHandleSockRsp(uint32 eventID, void* pdata, uint32 len);
 
 
-//±¨ÎÄ½âÎö´¦Àíº¯ÊıÏà¹ØÉùÃ÷
+//æŠ¥æ–‡è§£æå¤„ç†å‡½æ•°ç›¸å…³å£°æ˜
 typedef int32 (*CZ_FotaCmdParse)(uint8* input, uint32 inputlen);
 static int32 CZ_FotaParse_Null(uint8* input, uint32 inputlen);
 static int32 CZ_FotaCheckUpdateParse(uint8* input, uint32 inputlen);
@@ -351,7 +351,7 @@ static int32 CZ_FotaReportParse(uint8* input, uint32 inputlen);
 static int32 CZ_FotaPreParseData(void);
 static int32 CZ_FotaParseData(void);
 
-//·¢ÆğÈÎÎñÏà¹Øº¯ÊıÉùÃ÷
+//å‘èµ·ä»»åŠ¡ç›¸å…³å‡½æ•°å£°æ˜
 static void  CZ_Fota_Connect(void);
 static void  CZ_Fota_ConnectRsp(void);
 static bool  CZ_Fota_Check_IncompleteMission(void);
@@ -360,7 +360,7 @@ static int32 CZ_FotaSendGetFileInfoReq(uint8 AppIds);
 static int32 CZ_FotaSendDownloadReq(void);
 static int32 CZ_FotaSendReportReq(CZ_FOTA_FILE_STATUS_E status);
 
-//FotaNVÏà¹Øº¯ÊıÉùÃ÷
+//FotaNVç›¸å…³å‡½æ•°å£°æ˜
 static void CZ_Init_FotaNv(void);
 static void CZ_Get_FotaNv(FOTA_NV_S* fota_nv);
 static void CZ_Set_FotaNv(FOTA_NV_S* fota_nv);
@@ -400,7 +400,7 @@ const  CZ_FotaCmdParse      Fota_Cmd_Parse[5]       =
     CZ_FotaDownloadParse,
     CZ_FotaReportParse,
 };
-//TEA¼ÓÃÜÏà¹Øº¯Êı
+//TEAåŠ å¯†ç›¸å…³å‡½æ•°
 static uint32 Host2NetLong(uint32 ulHost) 
 { 
     const uint16 us = 0x1234 ; 
@@ -706,8 +706,8 @@ fail_exit:
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:AT_GPRS_IPAddrAnalyzer
-º¯ÊıÃèÊö:¼ì²âÊäÈë½øÀ´µÄµØÖ·ÊÇIP»¹ÊÇÓòÃû
+å‡½æ•°åç§°:AT_GPRS_IPAddrAnalyzer
+å‡½æ•°æè¿°:æ£€æµ‹è¾“å…¥è¿›æ¥çš„åœ°å€æ˜¯IPè¿˜æ˜¯åŸŸå
 *************************************************************/
 static int32 AT_GPRS_IPAddrAnalyzer(const char *pPdpAddr, uint8 uSize)
 {
@@ -748,8 +748,8 @@ static int32 AT_GPRS_IPAddrAnalyzer(const char *pPdpAddr, uint8 uSize)
 
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Fota_Connect
-º¯ÊıÃèÊö:·¢ÆğÒ»´ÎsocketÁ¬½ÓÇëÇó
+å‡½æ•°åç§°:CZ_Fota_Connect
+å‡½æ•°æè¿°:å‘èµ·ä¸€æ¬¡socketè¿æ¥è¯·æ±‚
 *************************************************************/
 static void CZ_Fota_Connect(void)
 {
@@ -767,8 +767,8 @@ static void CZ_Fota_Connect(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Fota_ConnectRsp
-º¯ÊıÃèÊö:SocketÁ¬½Ó³É¹¦µÄÏìÓ¦£¬¸ù¾İFotaNVÈ·¶¨ÏÂÒ»²½Òª×öµÄÈÎÎñ
+å‡½æ•°åç§°:CZ_Fota_ConnectRsp
+å‡½æ•°æè¿°:Socketè¿æ¥æˆåŠŸçš„å“åº”ï¼Œæ ¹æ®FotaNVç¡®å®šä¸‹ä¸€æ­¥è¦åšçš„ä»»åŠ¡
 *************************************************************/
 static void CZ_Fota_ConnectRsp(void)
 {
@@ -800,8 +800,8 @@ static void CZ_Fota_ConnectRsp(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Fota_ConnectClose
-º¯ÊıÃèÊö:¹Ø±ÕsocketÁ¬½Ó
+å‡½æ•°åç§°:CZ_Fota_ConnectClose
+å‡½æ•°æè¿°:å…³é—­socketè¿æ¥
 *************************************************************/
 static void CZ_Fota_ConnectClose(void)
 {
@@ -814,8 +814,8 @@ static void CZ_Fota_ConnectClose(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaSetState
-º¯ÊıÃèÊö:ÉèÖÃµ±Ç°fota×´Ì¬
+å‡½æ•°åç§°:CZ_FotaSetState
+å‡½æ•°æè¿°:è®¾ç½®å½“å‰fotaçŠ¶æ€
 *************************************************************/
 static void CZ_FotaSetState(CZ_FOTA_STATE_E state)
 {
@@ -823,8 +823,8 @@ static void CZ_FotaSetState(CZ_FOTA_STATE_E state)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetState
-º¯ÊıÃèÊö:»ñÈ¡µ±Ç°fota×´Ì¬
+å‡½æ•°åç§°:CZ_FotaGetState
+å‡½æ•°æè¿°:è·å–å½“å‰fotaçŠ¶æ€
 *************************************************************/
 static CZ_FOTA_STATE_E CZ_FotaGetState(void)
 {
@@ -832,8 +832,8 @@ static CZ_FOTA_STATE_E CZ_FotaGetState(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaSetHost
-º¯ÊıÃèÊö:ÉèÖÃfota·şÎñÆ÷Ö÷»úÃû
+å‡½æ•°åç§°:CZ_FotaSetHost
+å‡½æ•°æè¿°:è®¾ç½®fotaæœåŠ¡å™¨ä¸»æœºå
 *************************************************************/
 static void CZ_FotaSetHost(char* host)
 {
@@ -841,8 +841,8 @@ static void CZ_FotaSetHost(char* host)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaSetPort
-º¯ÊıÃèÊö:ÉèÖÃÄ¿±êIPµÄ¶Ë¿Ú
+å‡½æ•°åç§°:CZ_FotaSetPort
+å‡½æ•°æè¿°:è®¾ç½®ç›®æ ‡IPçš„ç«¯å£
 *************************************************************/
 static void CZ_FotaSetPort(uint16 port)
 {
@@ -850,8 +850,8 @@ static void CZ_FotaSetPort(uint16 port)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaSetErrorCode
-º¯ÊıÃèÊö:ÉèÖÃ´íÎóÂë
+å‡½æ•°åç§°:CZ_FotaSetErrorCode
+å‡½æ•°æè¿°:è®¾ç½®é”™è¯¯ç 
 *************************************************************/
 static void CZ_FotaSetErrorCode(uint32 errorcode)
 {
@@ -859,8 +859,8 @@ static void CZ_FotaSetErrorCode(uint32 errorcode)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetErrorCode
-º¯ÊıÃèÊö:»ñÈ¡´íÎóÂë
+å‡½æ•°åç§°:CZ_FotaGetErrorCode
+å‡½æ•°æè¿°:è·å–é”™è¯¯ç 
 *************************************************************/
 static uint32 CZ_FotaGetErrorCode(void)
 {
@@ -868,8 +868,8 @@ static uint32 CZ_FotaGetErrorCode(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Fota_Get_ActCid
-º¯ÊıÃèÊö:»ñÈ¡µ±Ç°¼¤»îµÄCID,Ã»ÓĞÈÎºÎCID¼¤»îÔò·µ»Ø-1
+å‡½æ•°åç§°:CZ_Fota_Get_ActCid
+å‡½æ•°æè¿°:è·å–å½“å‰æ¿€æ´»çš„CID,æ²¡æœ‰ä»»ä½•CIDæ¿€æ´»åˆ™è¿”å›-1
 *************************************************************/
 static int8 CZ_Fota_Get_ActCid(void)
 {
@@ -893,8 +893,8 @@ static int8 CZ_Fota_Get_ActCid(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_CheckNetState
-º¯ÊıÃèÊö:¼ì²âPS¸½×Å×´Ì¬ºÍPDP¼¤»î×´Ì¬
+å‡½æ•°åç§°:CZ_CheckNetState
+å‡½æ•°æè¿°:æ£€æµ‹PSé™„ç€çŠ¶æ€å’ŒPDPæ¿€æ´»çŠ¶æ€
 *************************************************************/
 static int32  CZ_CheckNetState(void)
 {
@@ -915,8 +915,8 @@ static int32  CZ_CheckNetState(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetPrivateKey
-º¯ÊıÃèÊö:»ñÈ¡ÖÕ¶ËÃØÔ¿
+å‡½æ•°åç§°:CZ_FotaGetPrivateKey
+å‡½æ•°æè¿°:è·å–ç»ˆç«¯ç§˜é’¥
 *************************************************************/
 static int32 CZ_FotaGetPrivateKey(uint8* pKey)
 {
@@ -940,8 +940,8 @@ static int32 CZ_FotaGetPrivateKey(uint8* pKey)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetTerminalId
-º¯ÊıÃèÊö:»ñÈ¡IMEI
+å‡½æ•°åç§°:CZ_FotaGetTerminalId
+å‡½æ•°æè¿°:è·å–IMEI
 *************************************************************/
 static void CZ_FotaGetTerminalId(uint8 *pTerminalId)
 {
@@ -966,8 +966,8 @@ static void CZ_FotaGetTerminalId(uint8 *pTerminalId)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetProtocolVer
-º¯ÊıÃèÊö:·µ»ØfotaĞ­Òé°æ±¾ºÅ
+å‡½æ•°åç§°:CZ_FotaGetProtocolVer
+å‡½æ•°æè¿°:è¿”å›fotaåè®®ç‰ˆæœ¬å·
 *************************************************************/
 static uint8 CZ_FotaGetProtocolVer(void)
 {
@@ -978,8 +978,8 @@ static uint8 CZ_FotaGetProtocolVer(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetHWVerInfo
-º¯ÊıÃèÊö:·µ»ØÓ²¼ş°æ±¾ºÅ
+å‡½æ•°åç§°:CZ_FotaGetHWVerInfo
+å‡½æ•°æè¿°:è¿”å›ç¡¬ä»¶ç‰ˆæœ¬å·
 *************************************************************/
 static void CZ_FotaGetHWVerInfo(char * pHWInfo)
 {
@@ -988,8 +988,8 @@ static void CZ_FotaGetHWVerInfo(char * pHWInfo)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetPlatFormVerInfo
-º¯ÊıÃèÊö:·µ»ØÆ½Ì¨°æ±¾ºÅ
+å‡½æ•°åç§°:CZ_FotaGetPlatFormVerInfo
+å‡½æ•°æè¿°:è¿”å›å¹³å°ç‰ˆæœ¬å·
 *************************************************************/
 static void CZ_FotaGetPlatFormVerInfo(char *pPlatFormVerInfo)
 {
@@ -998,8 +998,8 @@ static void CZ_FotaGetPlatFormVerInfo(char *pPlatFormVerInfo)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetTerminalInfo
-º¯ÊıÃèÊö:´ò°ü³§ÉÌĞÅÏ¢
+å‡½æ•°åç§°:CZ_FotaGetTerminalInfo
+å‡½æ•°æè¿°:æ‰“åŒ…å‚å•†ä¿¡æ¯
 *************************************************************/
 static void CZ_FotaGetTerminalInfo(CZ_FOTA_TERMINAL_INFO_S *pTerminalInfo)
 {
@@ -1017,8 +1017,8 @@ static void CZ_FotaGetTerminalInfo(CZ_FOTA_TERMINAL_INFO_S *pTerminalInfo)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaPrintfHex
-º¯ÊıÃèÊö:ÒÔHEX¸ñÊ½´òÓ¡Êı¾İ
+å‡½æ•°åç§°:CZ_FotaPrintfHex
+å‡½æ•°æè¿°:ä»¥HEXæ ¼å¼æ‰“å°æ•°æ®
 *************************************************************/
 static void CZ_FotaPrintfHex(char *title, uint8 *buf, int32 buf_len)
 {
@@ -1045,8 +1045,8 @@ static void CZ_FotaPrintfHex(char *title, uint8 *buf, int32 buf_len)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaHandleSockRsp
-º¯ÊıÃèÊö:socketÁ¬½ÓµÄ»Øµ÷
+å‡½æ•°åç§°:CZ_FotaHandleSockRsp
+å‡½æ•°æè¿°:socketè¿æ¥çš„å›è°ƒ
 *************************************************************/
 static int32 CZ_FotaHandleSockRsp(uint32 eventID, void* pdata, uint32 len)
 {
@@ -1143,8 +1143,8 @@ static int32 CZ_FotaHandleSockRsp(uint32 eventID, void* pdata, uint32 len)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaPacketReq
-º¯ÊıÃèÊö:´ò°ü¶ÔÓ¦cmdidµÄ±¨ÎÄ
+å‡½æ•°åç§°:CZ_FotaPacketReq
+å‡½æ•°æè¿°:æ‰“åŒ…å¯¹åº”cmdidçš„æŠ¥æ–‡
 *************************************************************/
 static int32 CZ_FotaPacketReq(uint32 cmdid, uint8 *input, int32 intputLen, uint8 *output, uint32 outBufLen)
 {
@@ -1193,8 +1193,8 @@ static int32 CZ_FotaPacketReq(uint32 cmdid, uint8 *input, int32 intputLen, uint8
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Get_PS_Svn_Ver
-º¯ÊıÃèÊö:»ñÈ¡µ×°üµÄsvn°æ±¾ºÅ
+å‡½æ•°åç§°:CZ_Get_PS_Svn_Ver
+å‡½æ•°æè¿°:è·å–åº•åŒ…çš„svnç‰ˆæœ¬å·
 *************************************************************/
 static void CZ_Get_PS_Svn_Ver(uint16* svn_ver)
 {
@@ -1205,7 +1205,7 @@ static void CZ_Get_PS_Svn_Ver(uint16* svn_ver)
 
     if (ptr != NULL)
     {
-        //ÏÈ½ØÈ¡µôML110_1.X.X.XXX_XXXXX_XÇ°3¸öµãÖ®Ç°µÄ×Ö·û
+        //å…ˆæˆªå–æ‰ML110_1.X.X.XXX_XXXXX_Xå‰3ä¸ªç‚¹ä¹‹å‰çš„å­—ç¬¦
         for(uint8 count = 0; count < 3 ; count ++)
         {
             ptr = strchr(ptr, '.') + 1;
@@ -1218,17 +1218,17 @@ static void CZ_Get_PS_Svn_Ver(uint16* svn_ver)
     }
     else
     {
-        //µ×°ü°æ±¾·ÇML110
+        //åº•åŒ…ç‰ˆæœ¬éML110
         * svn_ver = 1;
     }
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Get_BApp_Svn_Ver
-º¯ÊıÃèÊö:»ñÈ¡BootAppµÄsvn°æ±¾ºÅ
-±¸×¢£º
-1.ÓÉÓÚKingSDK½Ó¿Ú²»ÏÔÊ¾svn°æ±¾ºÅ£¬ÕâÀïÈ¡buildnum×÷Îªsvn°æ±¾ºÅ
-2.Èç¹ûÃ»ÓĞÉÕĞ´BootApp·ÖÇø£¬Ôò½«°æ±¾ºÅÉèÖÃÎª1
+å‡½æ•°åç§°:CZ_Get_BApp_Svn_Ver
+å‡½æ•°æè¿°:è·å–BootAppçš„svnç‰ˆæœ¬å·
+å¤‡æ³¨ï¼š
+1.ç”±äºKingSDKæ¥å£ä¸æ˜¾ç¤ºsvnç‰ˆæœ¬å·ï¼Œè¿™é‡Œå–buildnumä½œä¸ºsvnç‰ˆæœ¬å·
+2.å¦‚æœæ²¡æœ‰çƒ§å†™BootAppåˆ†åŒºï¼Œåˆ™å°†ç‰ˆæœ¬å·è®¾ç½®ä¸º1
 *************************************************************/
 static void CZ_Get_BApp_Svn_Ver(uint16* svn_ver)
 {
@@ -1251,12 +1251,12 @@ static void CZ_Get_BApp_Svn_Ver(uint16* svn_ver)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Init_FotaNv
-º¯ÊıÃèÊö:½«FotaNVÖĞµÄÊı¾İ¶ÁÈ¡µ½¶ÔÓ¦µÄÈ«¾Ö½á¹¹Ìå
-±¸×¢:Îª±ÜÃâÆµ·±µØ¶ÁÈ¡NV£¬½öÔÚÏß³Ì³õÊ¼»¯µÄÊ±ºò½«FotaNV´ÓNVÇøÖĞ
-¶ÁÈ¡³öÀ´£¬·ÅÈëÈ«¾Ö½á¹¹ÌåÖĞ¡£¸÷º¯ÊıĞèÒª¶ÁÈ¡NVĞÅÏ¢µÄÊ±ºòÍ¨¹ı½Ó¿Ú
-CZ_Get_FotaNv½«È«¾Ö½á¹¹ÌåÖĞµÄĞÅÏ¢¶ÁÈ¡³öÀ´¡£µ±Ê¹ÓÃCZ_Set_FotaNv
-Ê±£¬½«ĞŞ¸ÄµÄÊı¾İÍ¬²½Ğ´ÈëNVºÍÈ«¾Ö½á¹¹ÌåÖĞ¡£
+å‡½æ•°åç§°:CZ_Init_FotaNv
+å‡½æ•°æè¿°:å°†FotaNVä¸­çš„æ•°æ®è¯»å–åˆ°å¯¹åº”çš„å…¨å±€ç»“æ„ä½“
+å¤‡æ³¨:ä¸ºé¿å…é¢‘ç¹åœ°è¯»å–NVï¼Œä»…åœ¨çº¿ç¨‹åˆå§‹åŒ–çš„æ—¶å€™å°†FotaNVä»NVåŒºä¸­
+è¯»å–å‡ºæ¥ï¼Œæ”¾å…¥å…¨å±€ç»“æ„ä½“ä¸­ã€‚å„å‡½æ•°éœ€è¦è¯»å–NVä¿¡æ¯çš„æ—¶å€™é€šè¿‡æ¥å£
+CZ_Get_FotaNvå°†å…¨å±€ç»“æ„ä½“ä¸­çš„ä¿¡æ¯è¯»å–å‡ºæ¥ã€‚å½“ä½¿ç”¨CZ_Set_FotaNv
+æ—¶ï¼Œå°†ä¿®æ”¹çš„æ•°æ®åŒæ­¥å†™å…¥NVå’Œå…¨å±€ç»“æ„ä½“ä¸­ã€‚
 *************************************************************/
 static void CZ_Init_FotaNv(void)
 {
@@ -1265,8 +1265,8 @@ static void CZ_Init_FotaNv(void)
     KING_NvRead(CZ_FOTA_NV_ID, (void *)&s_cz_fota_nv, &size);
 }
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Get_FotaNv
-º¯ÊıÃèÊö:»ñÈ¡µ±Ç°µÄfotaNVÈ«¾Ö½á¹¹ÌåÊı¾İ
+å‡½æ•°åç§°:CZ_Get_FotaNv
+å‡½æ•°æè¿°:è·å–å½“å‰çš„fotaNVå…¨å±€ç»“æ„ä½“æ•°æ®
 *************************************************************/
 static void CZ_Get_FotaNv( FOTA_NV_S* fota_nv)
 {
@@ -1277,8 +1277,8 @@ static void CZ_Get_FotaNv( FOTA_NV_S* fota_nv)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Set_FotaNv
-º¯ÊıÃèÊö:ÉèÖÃµ±Ç°µÄfotaNVÈ«¾Ö½á¹¹Ìå²¢Í¬²½µ½NVÖĞ
+å‡½æ•°åç§°:CZ_Set_FotaNv
+å‡½æ•°æè¿°:è®¾ç½®å½“å‰çš„fotaNVå…¨å±€ç»“æ„ä½“å¹¶åŒæ­¥åˆ°NVä¸­
 *************************************************************/
 static void CZ_Set_FotaNv( FOTA_NV_S* fota_nv)
 {
@@ -1290,8 +1290,8 @@ static void CZ_Set_FotaNv( FOTA_NV_S* fota_nv)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Cali_FotaNv
-º¯ÊıÃèÊö:Ğ£×¼FotaNv,Ö÷ÒªÕë¶Ô¸Õ³ö³§µÄÊı¾İÈ«Îª0xFFµÄflash
+å‡½æ•°åç§°:CZ_Cali_FotaNv
+å‡½æ•°æè¿°:æ ¡å‡†FotaNv,ä¸»è¦é’ˆå¯¹åˆšå‡ºå‚çš„æ•°æ®å…¨ä¸º0xFFçš„flash
 *************************************************************/
 static void CZ_Cali_FotaNv(void)
 {
@@ -1299,9 +1299,9 @@ static void CZ_Cali_FotaNv(void)
     uint8 fota_index = CZ_FOTA_INDEX_PS;
     CZ_Init_FotaNv();
     CZ_Get_FotaNv(&fota_state);
-    //Ğ£×¼FotaNVµÄÖµ
-    //1.FLASHµÄ³ö³§ÉèÖÃÎªÈ«1£¬ĞèÒªÖÃ0
-    //2.FotaÍê³Éºó£¬state = CZ_FOTA_COMPLETE£¬ÔÚ´Ë´¦¶ÔÆäËûµÄ½á¹¹Ìå³ÉÔ±½øĞĞÖØÖÃ
+    //æ ¡å‡†FotaNVçš„å€¼
+    //1.FLASHçš„å‡ºå‚è®¾ç½®ä¸ºå…¨1ï¼Œéœ€è¦ç½®0
+    //2.Fotaå®Œæˆåï¼Œstate = CZ_FOTA_COMPLETEï¼Œåœ¨æ­¤å¤„å¯¹å…¶ä»–çš„ç»“æ„ä½“æˆå‘˜è¿›è¡Œé‡ç½®
 
     for (fota_index = CZ_FOTA_INDEX_PS; fota_index < CZ_FOTA_NUM; fota_index++ )
     {
@@ -1324,8 +1324,8 @@ static void CZ_Cali_FotaNv(void)
     CZ_Set_FotaNv(&fota_state);
 }
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Fota_Get_SpecNvStateIndex
-º¯ÊıÃèÊö:°´ÓÅÏÈ¼¶»ñÈ¡µÚÒ»¸ö²éÑ¯µ½µÄÖ¸¶¨µÄFotaNv×´Ì¬µÄindex
+å‡½æ•°åç§°:CZ_Fota_Get_SpecNvStateIndex
+å‡½æ•°æè¿°:æŒ‰ä¼˜å…ˆçº§è·å–ç¬¬ä¸€ä¸ªæŸ¥è¯¢åˆ°çš„æŒ‡å®šçš„FotaNvçŠ¶æ€çš„index
 *************************************************************/
 static uint8 CZ_Fota_Get_SpecNvStateIndex(FOTA_NV_S* fota_state, CZ_FOTA_NV_STATE_E specstate)
 {
@@ -1343,8 +1343,8 @@ static uint8 CZ_Fota_Get_SpecNvStateIndex(FOTA_NV_S* fota_state, CZ_FOTA_NV_STAT
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Fota_Check_NeedUpdate
-º¯ÊıÃèÊö:²éÑ¯ÊÇ·ñÓĞ·ÖÇø´¦ÓÚ´ıÉı¼¶×´Ì¬
+å‡½æ•°åç§°:CZ_Fota_Check_NeedUpdate
+å‡½æ•°æè¿°:æŸ¥è¯¢æ˜¯å¦æœ‰åˆ†åŒºå¤„äºå¾…å‡çº§çŠ¶æ€
 *************************************************************/
 static bool CZ_Fota_Check_NeedUpdate(FOTA_NV_S * fota_nv)
 {
@@ -1361,9 +1361,9 @@ static bool CZ_Fota_Check_NeedUpdate(FOTA_NV_S * fota_nv)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Fota_Check_IncompleteTask
-º¯ÊıÃèÊö:¼ì²âÊÇ·ñÓĞÎ´Íê³ÉµÄÈÎÎñ£¬ÒÀ´Î¼ì²âÒÑÉı¼¶Î´ÉÏ±¨¡¢
-ÒÑÏÂÔØÎ´Éı¼¶¡¢Î´ÏÂÔØÍê³É¡¢Î´ÇëÇó¸üĞÂ²éÑ¯µÄÈÎÎñ
+å‡½æ•°åç§°:CZ_Fota_Check_IncompleteTask
+å‡½æ•°æè¿°:æ£€æµ‹æ˜¯å¦æœ‰æœªå®Œæˆçš„ä»»åŠ¡ï¼Œä¾æ¬¡æ£€æµ‹å·²å‡çº§æœªä¸ŠæŠ¥ã€
+å·²ä¸‹è½½æœªå‡çº§ã€æœªä¸‹è½½å®Œæˆã€æœªè¯·æ±‚æ›´æ–°æŸ¥è¯¢çš„ä»»åŠ¡
 *************************************************************/
 static bool CZ_Fota_Check_IncompleteMission(void)
 {
@@ -1373,15 +1373,15 @@ static bool CZ_Fota_Check_IncompleteMission(void)
     
     CZ_Get_FotaNv(&fota_state);
 
-    //¼ì²éÊÇ·ñÓĞÎ´ÏÂÔØÍê³ÉµÄÈÎÎñ
+    //æ£€æŸ¥æ˜¯å¦æœ‰æœªä¸‹è½½å®Œæˆçš„ä»»åŠ¡
     fota_index = CZ_Fota_Get_SpecNvStateIndex(&fota_state, CZ_FOTA_NEEDDOWNLOAD);
     if (fota_index <= CZ_FOTA_INDEX_BOOTAPP)
     {
-        if (fota_state.Offset == 0)//Î´¿ªÊ¼ÏÂÔØµÄÈÎÎñ
+        if (fota_state.Offset == 0)//æœªå¼€å§‹ä¸‹è½½çš„ä»»åŠ¡
         {
             CZ_FotaSendGetFileInfoReq(fota_index +1);
         }
-        else//ÏÂÔØÒ»°ëµÄÈÎÎñ
+        else//ä¸‹è½½ä¸€åŠçš„ä»»åŠ¡
         {
             CZ_FotaSetState(CZ_FOTA_STATE_DOWNLOAD);
             CZ_FotaSendDownloadReq();
@@ -1397,8 +1397,8 @@ end:
 
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaConnectServer
-º¯ÊıÃèÊö:Á¬½ÓÖ¸¶¨µÄipºÍ¶Ë¿Ú
+å‡½æ•°åç§°:CZ_FotaConnectServer
+å‡½æ•°æè¿°:è¿æ¥æŒ‡å®šçš„ipå’Œç«¯å£
 *************************************************************/
 static int32 CZ_FotaConnectServer(SOCK_IN_ADDR_T ip,uint16 port)
 {
@@ -1438,8 +1438,8 @@ end:
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaTask
-º¯ÊıÃèÊö:fotaÏß³Ì
+å‡½æ•°åç§°:CZ_FotaTask
+å‡½æ•°æè¿°:fotaçº¿ç¨‹
 *************************************************************/
 static void CZ_FotaTask(uint32 argc, void *argv)
 {
@@ -1468,7 +1468,7 @@ static void CZ_FotaTask(uint32 argc, void *argv)
                     SOCK_IN_ADDR_T serverIp = {0};
                     if(AT_GPRS_IPAddrAnalyzer(s_cz_fota_server.serverHost, strlen(s_cz_fota_server.serverHost)) == 1)
                     {
-                        //ÊäÈëµÄÊÇIP
+                        //è¾“å…¥çš„æ˜¯IP
                         KING_ipaton(s_cz_fota_server.serverHost, &serverIp);
                         if (CZ_FotaConnectServer(serverIp, s_cz_fota_server.serverPort) != 0)
                         {
@@ -1501,7 +1501,7 @@ static void CZ_FotaTask(uint32 argc, void *argv)
                     }
                     else
                     {
-                        //½øĞĞÓòÃû½âÎö
+                        //è¿›è¡ŒåŸŸåè§£æ
                         uint8 cid = CZ_Fota_Get_ActCid();
                         hSocketContext = tcpip_getSwHandleByCID(cid);
                         CZFOTA_LOG("hSocketContext %d",hSocketContext);
@@ -1542,7 +1542,7 @@ static void CZ_FotaTask(uint32 argc, void *argv)
 
             case EV_CZ_FOTA_SOCKET_READ_RSP:
                 {
-                    //¶ÁÈ¡ÊÕµ½µÄsocketÊı¾İ£¬°´ÕÕ±¨ÎÄ¸ñÊ½½øĞĞÔ¤´¦Àí£¬±£ÁôTEA¼ÓÃÜ²¿·ÖµÄÊı¾İ
+                    //è¯»å–æ”¶åˆ°çš„socketæ•°æ®ï¼ŒæŒ‰ç…§æŠ¥æ–‡æ ¼å¼è¿›è¡Œé¢„å¤„ç†ï¼Œä¿ç•™TEAåŠ å¯†éƒ¨åˆ†çš„æ•°æ®
                     CZ_FotaPreParseData();
                 }
                 break;
@@ -1572,7 +1572,7 @@ static void CZ_FotaTask(uint32 argc, void *argv)
 
             case EV_CZ_FOTA_PARSE_DATA_RSP:
                 {
-                    //TEA½âÃÜÔ¤´¦ÀíÍêºóµÄÊı¾İ²¢×ö¶ÔÓ¦´¦Àí
+                    //TEAè§£å¯†é¢„å¤„ç†å®Œåçš„æ•°æ®å¹¶åšå¯¹åº”å¤„ç†
                     CZ_FotaParseData();
                 }
                 break;
@@ -1604,8 +1604,8 @@ static void CZ_FotaTask(uint32 argc, void *argv)
 
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaTaskInit
-º¯ÊıÃèÊö:³õÊ¼»¯fotaÏß³Ì
+å‡½æ•°åç§°:CZ_FotaTaskInit
+å‡½æ•°æè¿°:åˆå§‹åŒ–fotaçº¿ç¨‹
 *************************************************************/
 int8 CZ_FotaTaskInit(void)
 {
@@ -1633,8 +1633,8 @@ int8 CZ_FotaTaskInit(void)
 
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaInit
-º¯ÊıÃèÊö:fotataskºÍÈ«¾ÖfotaNV³õÊ¼»¯£¬ÉèÖÃIP¡¢¶Ë¿Ú
+å‡½æ•°åç§°:CZ_FotaInit
+å‡½æ•°æè¿°:fotataskå’Œå…¨å±€fotaNVåˆå§‹åŒ–ï¼Œè®¾ç½®IPã€ç«¯å£
 *************************************************************/
 int8 CZ_FotaInit(void)
 {
@@ -1653,8 +1653,8 @@ int8 CZ_FotaInit(void)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaSendUpdateCheckReq
-º¯ÊıÃèÊö:·¢ËÍËùÓĞ·ÖÇøÉı¼¶¼ì²âÇëÇó
+å‡½æ•°åç§°:CZ_FotaSendUpdateCheckReq
+å‡½æ•°æè¿°:å‘é€æ‰€æœ‰åˆ†åŒºå‡çº§æ£€æµ‹è¯·æ±‚
 *************************************************************/
 static int32  CZ_FotaSendUpdateCheckReq(void)
 {
@@ -1668,18 +1668,18 @@ static int32  CZ_FotaSendUpdateCheckReq(void)
     memset((void *)&fota_state, 0x00, size);
     CZ_Get_PS_Svn_Ver(&ps_ver);
     CZ_Get_BApp_Svn_Ver(&bootapp_ver);
-    //½«µ×°ü¡¢kingapp¡¢bootappµÄ×´Ì¬¸ÄÎªĞèÒª²éÑ¯¸üĞÂ
+    //å°†åº•åŒ…ã€kingappã€bootappçš„çŠ¶æ€æ”¹ä¸ºéœ€è¦æŸ¥è¯¢æ›´æ–°
 
     CZ_Get_FotaNv(&fota_state);
     
-    //FileVerMajorÎªsvn°æ±¾ºÅµÄ¸ß°ËÎ»£¬FileVerMinorÎªsvn°æ±¾ºÅµÄµÍ°ËÎ»¡£
-    //ÔÚfota·şÎñÆ÷ÉÏ´«¹Ì¼ş°üÊ±£º
-    //Appid£º1-µ×°ü£¬2-KingApp£¬3-bootapp
-    //MCU¹©Ó¦ÉÌ£º0
-    //²¿¼şºÅ£º0
-    //Ö÷°æ±¾ºÅ£º0
-    //´Î°æ±¾ºÅ£ºsvn°æ±¾ºÅ
-    //Ó¦ÓÃĞ£ÑéÂë£º0-0xFFFFFFFE
+    //FileVerMajorä¸ºsvnç‰ˆæœ¬å·çš„é«˜å…«ä½ï¼ŒFileVerMinorä¸ºsvnç‰ˆæœ¬å·çš„ä½å…«ä½ã€‚
+    //åœ¨fotaæœåŠ¡å™¨ä¸Šä¼ å›ºä»¶åŒ…æ—¶ï¼š
+    //Appidï¼š1-åº•åŒ…ï¼Œ2-KingAppï¼Œ3-bootapp
+    //MCUä¾›åº”å•†ï¼š0
+    //éƒ¨ä»¶å·ï¼š0
+    //ä¸»ç‰ˆæœ¬å·ï¼š0
+    //æ¬¡ç‰ˆæœ¬å·ï¼šsvnç‰ˆæœ¬å·
+    //åº”ç”¨æ ¡éªŒç ï¼š0-0xFFFFFFFE
     FileCheckReqInfo.FileVerInfo[CZ_FOTA_INDEX_PS].AppId = CZ_FOTA_FILE_TYPE_PS;
     FileCheckReqInfo.FileVerInfo[CZ_FOTA_INDEX_PS].FileVerMajor = ps_ver >> 8;
     FileCheckReqInfo.FileVerInfo[CZ_FOTA_INDEX_PS].FileVerMinor = ps_ver & 0xFF;
@@ -1722,8 +1722,8 @@ end:
 
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaSendGetFileInfoReq
-º¯ÊıÃèÊö:·¢ËÍ»ñÈ¡fotaÎÄ¼şĞÅÏ¢µÄÇëÇó
+å‡½æ•°åç§°:CZ_FotaSendGetFileInfoReq
+å‡½æ•°æè¿°:å‘é€è·å–fotaæ–‡ä»¶ä¿¡æ¯çš„è¯·æ±‚
 *************************************************************/
 static int32  CZ_FotaSendGetFileInfoReq(uint8 AppIds)
 {
@@ -1752,8 +1752,8 @@ end:
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaSendDownloadReq
-º¯ÊıÃèÊö:·¢ËÍÏÂÔØfotaÎÄ¼şµÄÇëÇó
+å‡½æ•°åç§°:CZ_FotaSendDownloadReq
+å‡½æ•°æè¿°:å‘é€ä¸‹è½½fotaæ–‡ä»¶çš„è¯·æ±‚
 *************************************************************/
 static int32  CZ_FotaSendDownloadReq(void)
 {
@@ -1815,8 +1815,8 @@ end:
 
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaSendStatusReport
-º¯ÊıÃèÊö:Ïòfota·şÎñÆ÷·¢ËÍ×´Ì¬±¨¸æ
+å‡½æ•°åç§°:CZ_FotaSendStatusReport
+å‡½æ•°æè¿°:å‘fotaæœåŠ¡å™¨å‘é€çŠ¶æ€æŠ¥å‘Š
 *************************************************************/
 static int32 CZ_FotaSendReportReq(CZ_FOTA_FILE_STATUS_E status)
 {
@@ -1887,8 +1887,8 @@ static int32 CZ_FotaSendReportReq(CZ_FOTA_FILE_STATUS_E status)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaPreParseData
-º¯ÊıÃèÊö:°´ÕÕ±¨ÎÄ¸ñÊ½Ô¤½âÎöÊÕµ½µÄsocketÊı¾İ²¢×ö¶ÔÓ¦´¦Àí
+å‡½æ•°åç§°:CZ_FotaPreParseData
+å‡½æ•°æè¿°:æŒ‰ç…§æŠ¥æ–‡æ ¼å¼é¢„è§£ææ”¶åˆ°çš„socketæ•°æ®å¹¶åšå¯¹åº”å¤„ç†
 *************************************************************/
 static int32 CZ_FotaPreParseData(void)
 {
@@ -1935,7 +1935,7 @@ static int32 CZ_FotaPreParseData(void)
         }
         else if (cmdid == CZ_FOTA_CMD_ABNORAML_RSP)
         {
-            //ÊÕµ½8100±íÊ¾ÓĞÒì³££¬Ö±½ÓÇå¿ÕFotaNv
+            //æ”¶åˆ°8100è¡¨ç¤ºæœ‰å¼‚å¸¸ï¼Œç›´æ¥æ¸…ç©ºFotaNv
             FOTA_NV_S fota_state = {0};
             memset((void*)&fota_state, 0x00, sizeof(FOTA_NV_S));
             CZ_Set_FotaNv(&fota_state);
@@ -1984,8 +1984,8 @@ end:
 
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaParseData
-º¯ÊıÃèÊö:½«Êı¾İTEA½âÃÜ²¢×ö¶ÔÓ¦´¦Àí
+å‡½æ•°åç§°:CZ_FotaParseData
+å‡½æ•°æè¿°:å°†æ•°æ®TEAè§£å¯†å¹¶åšå¯¹åº”å¤„ç†
 *************************************************************/
 static int32 CZ_FotaParseData(void)
 {
@@ -1998,8 +1998,8 @@ static int32 CZ_FotaParseData(void)
     CZ_FOTA_RSP_PKG_HEAD_S * pRspPgkHead = NULL;
     pRspPgkHead = (CZ_FOTA_RSP_PKG_HEAD_S *) s_cz_socket_trxbuff.RecvDataBuf;
     uint32 cmdid = KING_htonl(pRspPgkHead->CmdId);
-    //ÕâÀïĞèÒª¸ù¾İcmdidÀ´¾ö¶¨ulEncµÄ³¤¶È¡£
-    //Ã¿¸ö½×¶ÎµÄulEnc³¤¶È²»Ò»Ñù£¬ËùÒÔÃ¿¸ö½×¶ÎµÄtea½âÃÜËùĞèÒªµÄulEncÒ²²»Ò»Ñù
+    //è¿™é‡Œéœ€è¦æ ¹æ®cmdidæ¥å†³å®šulEncçš„é•¿åº¦ã€‚
+    //æ¯ä¸ªé˜¶æ®µçš„ulEncé•¿åº¦ä¸ä¸€æ ·ï¼Œæ‰€ä»¥æ¯ä¸ªé˜¶æ®µçš„teaè§£å¯†æ‰€éœ€è¦çš„ulEncä¹Ÿä¸ä¸€æ ·
     CZFOTA_LOG("%s cmdid:0x%08X", __FUNCTION__, cmdid);
     switch(cmdid)
     {
@@ -2034,8 +2034,8 @@ static int32 CZ_FotaParseData(void)
         goto end;
     }
 
-    //CZ_FotaPreParseDataÖĞÒÑ¾­¶ÔcmdidµÄÈ¡Öµ·¶Î§½øĞĞÑéÖ¤ÁË
-    //´Ë´¦Ö»ĞèÒª½«cmdid×ª»»³ÉÊı×éÏÂ±ê¼´¿É£¬ÎŞĞèÔÙÑéÖ¤ÓĞĞ§ĞÔ
+    //CZ_FotaPreParseDataä¸­å·²ç»å¯¹cmdidçš„å–å€¼èŒƒå›´è¿›è¡ŒéªŒè¯äº†
+    //æ­¤å¤„åªéœ€è¦å°†cmdidè½¬æ¢æˆæ•°ç»„ä¸‹æ ‡å³å¯ï¼Œæ— éœ€å†éªŒè¯æœ‰æ•ˆæ€§
     uint8 tmp_id = (uint8)cmdid/2;
     ret = Fota_Cmd_Parse[tmp_id](pdu, ulEnc);
     
@@ -2044,8 +2044,8 @@ end:
     return ret;
 }
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_FotaParse_Null
-º¯ÊıÃèÊö:¿Õº¯Êı£¬·µ»Ø´íÎó
+å‡½æ•°åç§°:CZ_FotaParse_Null
+å‡½æ•°æè¿°:ç©ºå‡½æ•°ï¼Œè¿”å›é”™è¯¯
 *************************************************************/
 static int32 CZ_FotaParse_Null(uint8* input, uint32 inputlen)
 {
@@ -2053,8 +2053,8 @@ static int32 CZ_FotaParse_Null(uint8* input, uint32 inputlen)
 }
 
 /*******************************************************************************
-º¯ÊıÃû³Æ:CZ_FotaCheckUpdateParse
-º¯ÊıÃèÊö:¶Ô¼ì²é¸üĞÂµÄÇëÇóµÄÏìÓ¦±¨ÎÄ½âÃÜºó£¬½øĞĞÏÂÒ»²½²Ù×÷(ÇëÇóÎÄ¼şĞÅÏ¢»òÍË³öÏß³Ì)
+å‡½æ•°åç§°:CZ_FotaCheckUpdateParse
+å‡½æ•°æè¿°:å¯¹æ£€æŸ¥æ›´æ–°çš„è¯·æ±‚çš„å“åº”æŠ¥æ–‡è§£å¯†åï¼Œè¿›è¡Œä¸‹ä¸€æ­¥æ“ä½œ(è¯·æ±‚æ–‡ä»¶ä¿¡æ¯æˆ–é€€å‡ºçº¿ç¨‹)
 ********************************************************************************/
 static int32 CZ_FotaCheckUpdateParse(uint8* input, uint32 inputlen)
 {
@@ -2106,7 +2106,7 @@ static int32 CZ_FotaCheckUpdateParse(uint8* input, uint32 inputlen)
     //CZ_Fota_Deactive();
 
 end:
-    is_need_dl = (fota_index == CZ_FOTA_NUM) ? 0 : 1;    //ÄÜÖ´ĞĞµ½ÕâÀïËµÃ÷DNS½âÎöÃ»ÎÊÌâ£¬ËùÒÔÖ»ÓĞ0»ò1Á½ÖÖÇé¿ö
+    is_need_dl = (fota_index == CZ_FOTA_NUM) ? 0 : 1;    //èƒ½æ‰§è¡Œåˆ°è¿™é‡Œè¯´æ˜DNSè§£ææ²¡é—®é¢˜ï¼Œæ‰€ä»¥åªæœ‰0æˆ–1ä¸¤ç§æƒ…å†µ
     URC_CmdFunc_CZUPCHK(is_need_dl);
 
 exit:
@@ -2116,8 +2116,8 @@ exit:
 
 
 /*******************************************************************************
-º¯ÊıÃû³Æ:CZ_FotaGetFileInfoParse
-º¯ÊıÃèÊö:¶Ô»ñÈ¡ÎÄ¼şĞÅÏ¢ÇëÇóµÄÏìÓ¦±¨ÎÄ½âÃÜºó£¬½øĞĞÏÂÒ»²½²Ù×÷(ÇëÇóÏÂÔØ)
+å‡½æ•°åç§°:CZ_FotaGetFileInfoParse
+å‡½æ•°æè¿°:å¯¹è·å–æ–‡ä»¶ä¿¡æ¯è¯·æ±‚çš„å“åº”æŠ¥æ–‡è§£å¯†åï¼Œè¿›è¡Œä¸‹ä¸€æ­¥æ“ä½œ(è¯·æ±‚ä¸‹è½½)
 ********************************************************************************/
 static int32 CZ_FotaGetFileInfoParse(uint8* input, uint32 inputlen)
 {
@@ -2165,8 +2165,8 @@ end:
 
 
 /****************************************************************************************
-º¯ÊıÃû³Æ:CZ_FotaDownloadParse
-º¯ÊıÃèÊö:¶ÔÇëÇóÏÂÔØÎÄ¼şµÄÏìÓ¦±¨ÎÄ½âÃÜºó£¬½øĞĞÏÂÒ»²½²Ù×÷(±¨¸æÏÂÔØ×´Ì¬»ò¼ÌĞøÇëÇóÏÂÔØÏÂÒ»°ü)
+å‡½æ•°åç§°:CZ_FotaDownloadParse
+å‡½æ•°æè¿°:å¯¹è¯·æ±‚ä¸‹è½½æ–‡ä»¶çš„å“åº”æŠ¥æ–‡è§£å¯†åï¼Œè¿›è¡Œä¸‹ä¸€æ­¥æ“ä½œ(æŠ¥å‘Šä¸‹è½½çŠ¶æ€æˆ–ç»§ç»­è¯·æ±‚ä¸‹è½½ä¸‹ä¸€åŒ…)
 ****************************************************************************************/
 static int32 CZ_FotaDownloadParse(uint8* input, uint32 inputlen)
 {
@@ -2231,8 +2231,8 @@ end:
 
 
 /****************************************************************************************
-º¯ÊıÃû³Æ:CZ_FotaReportParse
-º¯ÊıÃèÊö:ÊÕµ½·¢ËÍ×´Ì¬±¨¸æµÄÏìÓ¦£¬Í¨¹ı±¾µØ±£´æµÄÒ»Ğ©×´Ì¬×öÏÂÒ»²½²Ù×÷(ÍË³öÏß³Ì/·¢ËÍ±¨¸æ/ÖØÆô)
+å‡½æ•°åç§°:CZ_FotaReportParse
+å‡½æ•°æè¿°:æ”¶åˆ°å‘é€çŠ¶æ€æŠ¥å‘Šçš„å“åº”ï¼Œé€šè¿‡æœ¬åœ°ä¿å­˜çš„ä¸€äº›çŠ¶æ€åšä¸‹ä¸€æ­¥æ“ä½œ(é€€å‡ºçº¿ç¨‹/å‘é€æŠ¥å‘Š/é‡å¯)
 ****************************************************************************************/
 static int32 CZ_FotaReportParse(uint8* input, uint32 inputlen)
 {
@@ -2251,7 +2251,7 @@ static int32 CZ_FotaReportParse(uint8* input, uint32 inputlen)
         
         case CZ_FOTA_STATE_UPDATE:
             {
-                //ÉÏ±¨µÃµ½ÏìÓ¦
+                //ä¸ŠæŠ¥å¾—åˆ°å“åº”
                 memset((void*)&fota_state, 0x00, size);
                 CZ_Set_FotaNv(&fota_state);
                 if(s_cz_fota_dl_state.dl_file_vaild == CZ_FOTA_NO_ERROR)
@@ -2264,7 +2264,7 @@ static int32 CZ_FotaReportParse(uint8* input, uint32 inputlen)
 
         case CZ_FOTA_STATE_CHECK:
             {
-                //ÊÕµ½ÏÂÔØÒì³£µÄÉÏ±¨ÏìÓ¦£¬ÖÃÎ»NV×´Ì¬ÎªCZ_FOTA_COMPLETE¡£´ËÊ±ÓÃ»§Ó¦¼ì²éfota·şÎñÆ÷¶ËÊÇ·ñ´æÔÚÎÊÌâ
+                //æ”¶åˆ°ä¸‹è½½å¼‚å¸¸çš„ä¸ŠæŠ¥å“åº”ï¼Œç½®ä½NVçŠ¶æ€ä¸ºCZ_FOTA_COMPLETEã€‚æ­¤æ—¶ç”¨æˆ·åº”æ£€æŸ¥fotaæœåŠ¡å™¨ç«¯æ˜¯å¦å­˜åœ¨é—®é¢˜
                 memset((void*)&fota_state, 0x00, size);
                 CZ_Set_FotaNv(&fota_state);
                 ret = CZ_FOTA_NO_ERROR;
@@ -2273,7 +2273,7 @@ static int32 CZ_FotaReportParse(uint8* input, uint32 inputlen)
         
         default:
             {
-                //ÏÂÔØÍê³ÉµÄ±¨¸æ
+                //ä¸‹è½½å®Œæˆçš„æŠ¥å‘Š
                 ret = FAIL;
             }
             break;
@@ -2285,8 +2285,8 @@ static int32 CZ_FotaReportParse(uint8* input, uint32 inputlen)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:CZ_Fota_CheckImage
-º¯ÊıÃèÊö:Ğ£ÑéĞ´ÈëfotaflashµÄÎÄ¼ş°üÍ·¼°²î·Ö°æ±¾ÊÇ·ñÓĞĞ§
+å‡½æ•°åç§°:CZ_Fota_CheckImage
+å‡½æ•°æè¿°:æ ¡éªŒå†™å…¥fotaflashçš„æ–‡ä»¶åŒ…å¤´åŠå·®åˆ†ç‰ˆæœ¬æ˜¯å¦æœ‰æ•ˆ
 *************************************************************/
 static int32 CZ_Fota_CheckImage(void)
 {
@@ -2317,8 +2317,8 @@ end:
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:URC_CmdFunc_CZUPCHK
-º¯ÊıÃèÊö:·¢ËÍ+CZUPCHKÏà¹ØµÄURC
+å‡½æ•°åç§°:URC_CmdFunc_CZUPCHK
+å‡½æ•°æè¿°:å‘é€+CZUPCHKç›¸å…³çš„URC
 *************************************************************/
 static void URC_CmdFunc_CZUPCHK(uint16 result)
 {
@@ -2328,8 +2328,8 @@ static void URC_CmdFunc_CZUPCHK(uint16 result)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:URC_CmdFunc_CZUPDL
-º¯ÊıÃèÊö:·¢ËÍ+CZUPDLÏà¹ØµÄURC
+å‡½æ•°åç§°:URC_CmdFunc_CZUPDL
+å‡½æ•°æè¿°:å‘é€+CZUPDLç›¸å…³çš„URC
 *************************************************************/
 static void URC_CmdFunc_CZUPDL(uint8 result, uint32 status)
 {
@@ -2340,8 +2340,8 @@ static void URC_CmdFunc_CZUPDL(uint8 result, uint32 status)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:AT_CmdFunc_CZUPCHK
-º¯ÊıÃèÊö:AT+CZUPCHK
+å‡½æ•°åç§°:AT_CmdFunc_CZUPCHK
+å‡½æ•°æè¿°:AT+CZUPCHK
 *************************************************************/
 void AT_CmdFunc_CZUPCHK(AT_CMD_PARA *pParam)
 {
@@ -2414,7 +2414,7 @@ void AT_CmdFunc_CZUPCHK(AT_CMD_PARA *pParam)
                     KING_MutexLock(s_fota_check_mutex, WAIT_OPT_INFINITE);
                     s_cz_fota_chk_flag = CZ_AT_FOTA_CHKDONE;
                     KING_MutexUnLock(s_fota_check_mutex);
-                    sprintf(strRsp,"+CZUPCHK: 2,1");              //fotaNV²»´¦ÓÚ³õÊ¼×´Ì¬£¬ËµÃ÷ÓĞÎ´Íê³ÉµÄÈÎÎñ
+                    sprintf(strRsp,"+CZUPCHK: 2,1");              //fotaNVä¸å¤„äºåˆå§‹çŠ¶æ€ï¼Œè¯´æ˜æœ‰æœªå®Œæˆçš„ä»»åŠ¡
                 }
                 else
                 {
@@ -2424,19 +2424,19 @@ void AT_CmdFunc_CZUPCHK(AT_CMD_PARA *pParam)
                     switch(state)
                     {
                         case CZ_AT_FOTA_CHKDONE:
-                            sprintf(strRsp,"+CZUPCHK: 2,0"); //ÒÑ²éÑ¯Íê£¬ÎŞĞè¸üĞÂ
+                            sprintf(strRsp,"+CZUPCHK: 2,0"); //å·²æŸ¥è¯¢å®Œï¼Œæ— éœ€æ›´æ–°
                             break;
                         
                         case CZ_AT_FOTA_CHKING:
-                            sprintf(strRsp,"+CZUPCHK: 1,0"); //²éÑ¯ÖĞ
+                            sprintf(strRsp,"+CZUPCHK: 1,0"); //æŸ¥è¯¢ä¸­
                             break;
 
                         case CZ_AT_FOTA_CHKFAIL:
-                            sprintf(strRsp,"+CZUPCHK: 2,%d", g_czErrCode);   //ÒÑ²éÑ¯£¬µ«ÒòÎªÍøÂçÔ­ÒòÊ§°Ü
+                            sprintf(strRsp,"+CZUPCHK: 2,%d", g_czErrCode);   //å·²æŸ¥è¯¢ï¼Œä½†å› ä¸ºç½‘ç»œåŸå› å¤±è´¥
                             break;
                         
                         default:
-                            sprintf(strRsp,"+CZUPCHK: 0,0"); //¿ª»úÖÁ½ñÃ»²éÑ¯¹ı
+                            sprintf(strRsp,"+CZUPCHK: 0,0"); //å¼€æœºè‡³ä»Šæ²¡æŸ¥è¯¢è¿‡
                             break;
                     }
                 }
@@ -2456,8 +2456,8 @@ void AT_CmdFunc_CZUPCHK(AT_CMD_PARA *pParam)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:AT_CmdFunc_CZUPDL
-º¯ÊıÃèÊö:AT+CZUPDL
+å‡½æ•°åç§°:AT_CmdFunc_CZUPDL
+å‡½æ•°æè¿°:AT+CZUPDL
 *************************************************************/
 void AT_CmdFunc_CZUPDL(AT_CMD_PARA *pParam)
 {
@@ -2483,7 +2483,7 @@ void AT_CmdFunc_CZUPDL(AT_CMD_PARA *pParam)
                 if(CZ_Fota_Check_NeedUpdate(&fota_nv) == TRUE)
                 {
                     at_CmdRespOK(pParam->engine);
-                    //Ö´ĞĞÎ´Íê³ÉµÄÈÎÎñ£¬°üÀ¨´Ó»ñÈ¡ÎÄ¼şĞÅÏ¢¿ªÊ¼ÏÂÔØÁ÷³Ì¡¢ÒÑ»ñÈ¡ÎÄ¼şĞÅÏ¢Î´ÏÂÔØ¡¢ÒÑÏÂÔØÎ´Íê³É
+                    //æ‰§è¡Œæœªå®Œæˆçš„ä»»åŠ¡ï¼ŒåŒ…æ‹¬ä»è·å–æ–‡ä»¶ä¿¡æ¯å¼€å§‹ä¸‹è½½æµç¨‹ã€å·²è·å–æ–‡ä»¶ä¿¡æ¯æœªä¸‹è½½ã€å·²ä¸‹è½½æœªå®Œæˆ
                     CZ_FotaSetState(CZ_FOTA_STATE_CONTINUE);
                     CZ_Fota_Connect();
                     isDownLoading = TRUE;
@@ -2505,24 +2505,24 @@ void AT_CmdFunc_CZUPDL(AT_CMD_PARA *pParam)
                 {
                     case CZ_FOTA_DL_IDLE:
                         {
-                            //fotaNVÖĞÓĞ¹Ì¼şĞÅÏ¢
+                            //fotaNVä¸­æœ‰å›ºä»¶ä¿¡æ¯
                             if(fota_nv.FileLenth != 0)
                             {
                                 if(fota_nv.Offset == fota_nv.FileLenth)
                                 {
-                                    //ÒÑÏÂÔØÍê³É
+                                    //å·²ä¸‹è½½å®Œæˆ
                                     sprintf(strRsp,"+CZUPDL: 3,100");
                                 }
                                 else
                                 {
 
-                                    //ÏÂÔØÖĞ
+                                    //ä¸‹è½½ä¸­
                                     sprintf(strRsp,"+CZUPDL: 1,%d", (fota_nv.Offset * 100)/ fota_nv.FileLenth);
                                 }
                             }
                             else
                             {
-                                //ÎŞÏÂÔØÈÎÎñ
+                                //æ— ä¸‹è½½ä»»åŠ¡
                                 sprintf(strRsp,"+CZUPDL: 0,0");
                             }
                         }
@@ -2568,8 +2568,8 @@ void AT_CmdFunc_CZUPDL(AT_CMD_PARA *pParam)
 }
 
 /*************************************************************
-º¯ÊıÃû³Æ:AT_CmdFunc_CZUPDATE
-º¯ÊıÃèÊö:AT+CZUPDATE
+å‡½æ•°åç§°:AT_CmdFunc_CZUPDATE
+å‡½æ•°æè¿°:AT+CZUPDATE
 *************************************************************/
 void AT_CmdFunc_CZUPDATE(AT_CMD_PARA *pParam)
 {
@@ -2589,12 +2589,12 @@ void AT_CmdFunc_CZUPDATE(AT_CMD_PARA *pParam)
 	                char strRsp[20] = {0};
 	                memset(strRsp, 0x00, sizeof(strRsp));
 	                CZ_Get_FotaNv(&fota_nv);
-					if(fota_nv.Offset == 0) //´Ë´¦´¦ÀíÓÃ»§µÄÒì³£²Ù×÷:²éÑ¯µ½¸üĞÂºó²»ÏÂÔØÖ±½ÓÉı¼¶£¬µ¼ÖÂfotaNV±»Çå¿Õ¡£
+					if(fota_nv.Offset == 0) //æ­¤å¤„å¤„ç†ç”¨æˆ·çš„å¼‚å¸¸æ“ä½œ:æŸ¥è¯¢åˆ°æ›´æ–°åä¸ä¸‹è½½ç›´æ¥å‡çº§ï¼Œå¯¼è‡´fotaNVè¢«æ¸…ç©ºã€‚
 					{
-						//Ã»ÓĞÒªÉı¼¶µÄimage
+						//æ²¡æœ‰è¦å‡çº§çš„image
 	                    at_CmdRespCmeError(pParam->engine, ERR_AT_CME_CZFOTA_NOT_NEED_UPDATE);
 					}
-	                else if(CZ_Fota_Check_NeedUpdate(&fota_nv) == true || (fota_nv.Offset == fota_nv.FileLenth))//Offset·Ç0ÇÒµÈÓÚFileLenth
+	                else if(CZ_Fota_Check_NeedUpdate(&fota_nv) == true || (fota_nv.Offset == fota_nv.FileLenth))//Offseté0ä¸”ç­‰äºFileLenth
 	                {
 	                    s_cz_fota_dl_state.dl_file_vaild = CZ_Fota_CheckImage();
 	                    if(s_cz_fota_dl_state.dl_file_vaild == CZ_FOTA_NO_ERROR)
@@ -2604,7 +2604,7 @@ void AT_CmdFunc_CZUPDATE(AT_CMD_PARA *pParam)
 	                    }
 	                    else
 	                    {
-	                        //image´íÎó
+	                        //imageé”™è¯¯
 	                        at_CmdRespCmeError(pParam->engine, CZ_FotaGetErrorCode());
 	                    }
 	                    CZ_FotaSetState(CZ_FOTA_STATE_UPDATE);
@@ -2612,7 +2612,7 @@ void AT_CmdFunc_CZUPDATE(AT_CMD_PARA *pParam)
 	                }
 	                else
 	                {
-	                    //Ã»ÓĞÒªÉı¼¶µÄimage
+	                    //æ²¡æœ‰è¦å‡çº§çš„image
 	                    at_CmdRespCmeError(pParam->engine, ERR_AT_CME_CZFOTA_NOT_NEED_UPDATE);
 	                }
             	}

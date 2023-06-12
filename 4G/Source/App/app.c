@@ -8,10 +8,7 @@ uint32 writeLen = 0;
 
 /* 线程ID */
 THREAD_HANDLE AppTaskStartThreadH = NULL;
-THREAD_HANDLE TH1ThreadH = NULL;
-THREAD_HANDLE TH2ThreadH = NULL;
-THREAD_HANDLE TH3ThreadH = NULL;
-THREAD_HANDLE TH4ThreadH = NULL;
+THREAD_HANDLE RS485ThreadH = NULL;
 
 /* 定时器ID */
 TIMER_HANDLE time1H = NULL;
@@ -19,11 +16,11 @@ TIMER_HANDLE time1H = NULL;
 /* 信号量 */
 SEM_HANDLE sem1H = NULL;
 
+/* 事件标志位 */
+EVENT_HANDLE rs485EH = NULL;
+
 /* 消息队列 */
 MSG_HANDLE msg1H = NULL;
-
-
-
 
 /*
  * 线程简单配置函数
@@ -40,7 +37,6 @@ THREAD_ATTR_S* KING_Thread_Config(THREAD_ENTRY_FUN fun,void* param,THREAD_PRIORI
     threadAttr.priority = priority;
     threadAttr.stackSize = stackSize;
     
-
     /* 返回线程配置指针地址 */
     return &threadAttr;
 }
@@ -87,110 +83,50 @@ TIMER_ATTR_S* KING_Time_Config(TIMER_FUN fun,uint32 timeout,bool isPeriod)
     return &timerAttr;
 }
 
-
-/* 任务1 */
-void th1(void *param)
-{
-    int ret = 0;
-    MSG_S msg1;
-
-    /* 创建消息队列 */
-    KING_MsgCreate(&msg1H);
-
-    while(1){
-        memset(&msg1,0x00,sizeof(MSG_S));
-        msg1.messageID = 0x00000001;
-//        DBG_U2_Send("MSG_S size is %d\r\n",sizeof(MSG_S));
-        KING_MsgSend(&msg1,msg1H);
-        DBG_U2_Send("th1 running...\r\n");
-//        DBG_U2_Send("th1 ID is %x\r\n",TH1ThreadH);
-        KING_Sleep(1000);
-    }
-}
-
-/* 任务2 */
-void th2(void *param)
-{
-    int ret = 0;
-    uint8 temp = 0;
-
-    while(1){
-        DBG_U2_Send("th2 running...\r\n");
-        DBG_U2_Send("th2 ID is %x\r\n",TH2ThreadH);
-        KING_ThreadSuspend(TH1ThreadH);
-        temp++;
-        if(temp >= 5){
-            temp = 0;
-            KING_ThreadResume(TH1ThreadH);
-            ret = KING_SemPut(sem1H);
-            LOG_P(ret,"KING_SemPut() sem1 Fail!\r\n");
-        }
-        KING_Sleep(2000);
-    }
-}
-
-/* 任务3 */
-void th3(void *param)
-{
-    int ret = 0;
-    while(1){
-        ret = KING_SemGet(sem1H,WAIT_OPT_INFINITE);
-        LOG_P(ret,"KING_SemGet() sem1 Fail!\r\n");
-        DBG_U2_Send("th3 running\r\n");
-    }
-}
-
-void th4(void *pragma)
-{
-    int ret = 0;
-    MSG_S msg1;
-
-    while (1)
-    {
-        memset(&msg1,0x00,sizeof(MSG_S));
-        ret = KING_MsgRcv(&msg1,msg1H,WAIT_OPT_INFINITE);
-        LOG_P(ret,"KING_MsgRcv() msg1 Fail!\r\n");
-        DBG_U2_Send("reseve: msgID is %x\r\n",msg1.messageID);
-    }
-    
-
-}
-
+/* 定时器1 */
 void time1_th(uint32 tmrId)
 {
-    int ret = 0;
+
+    //int ret = 0;
     while (1)
     {
-        DBG_U2_Send("time1 running\r\n");
-        LOG_P(ret,"KING_SemPut() sem1 Fail!\r\n");
+        //U2_Send("time1 running\r\n");        
         KING_Sleep(1000);
     }
     
     
+}
+
+void rs485_handle(void *Param)
+{
+    int ret = 0;
+
+    /* 创建标志事件 */
+    ret = KING_EventCreate("485_data",&rs485EH);
+    LOG_P(ret,"KING_EventCreate() rs485EH Fail\r\n");
+    /* 485串口初始化,115200 */
+    rs485_init();
+
+    while(1){
+
+        /* 获取并清楚标志位 */
+        ret = KING_EventGet(rs485EH,1,4000);
+        LOG_P(ret,"RS485 resive timeout\r\n");
+        if(ret == SUCCESS){
+            KING_Sleep(100);
+            rs_485_data_resive();
+            rs485_input_detection();
+            U2_Send("th rs485_handle is run\r\n");
+        }
+    }
 }
 
 void AppTaskStart(void *param)
 {
     int ret = 0;
 
-    /* 创建信号量 */
-    ret = KING_SemCreate("sem1",0,&sem1H);
-    LOG_P(ret,"KING_SemCreate() sem1 Fail!\r\n");
-
-    
-
-    /* 创建任务1 */
-    ret = KING_ThreadCreate("th1",KING_Thread_Config(th1,NULL,3,1024),&TH1ThreadH);
-    LOG_P(ret,"KING_ThreadCreate() th1 Fail!\r\n");
-
-    /* 创建任务2 */
-    ret = KING_ThreadCreate("th2",KING_Thread_Config(th2,NULL,3,1024),&TH2ThreadH);
-    LOG_P(ret,"KING_ThreadCreate() th2 Fail!\r\n");
-    /* 创建任务3 */
-    ret = KING_ThreadCreate("th3",KING_Thread_Config(th3,NULL,3,1024),&TH3ThreadH);
-    LOG_P(ret,"KING_ThreadCreate() th3 Fail!\r\n");
-    /* 创建任务4 */
-    ret = KING_ThreadCreate("th4",KING_Thread_Config(th4,NULL,3,1024),&TH4ThreadH);
+    /* 创建485信息处理任务 */
+    ret = KING_ThreadCreate("rs485_handle",KING_Thread_Config(rs485_handle,NULL,3,3072),&RS485ThreadH);
     LOG_P(ret,"KING_ThreadCreate() th4 Fail!\r\n");
 
     /* 创建定时器 */
