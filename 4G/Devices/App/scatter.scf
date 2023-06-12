@@ -1,0 +1,18 @@
+CODE_ROM  0x0713d000
+{
+  INIT_CODE  +0
+  {
+    main_entry.o (Init, +First)
+    * (+RO)
+  }
+  
+  RAM_RW  +0x0
+  {
+    * (+RW)
+  }
+
+  RAM_ZI  +0x0
+  {
+    *(+ZI)
+  }
+}

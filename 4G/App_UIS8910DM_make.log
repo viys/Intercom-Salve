@@ -1,0 +1,17 @@
+Compiling C Source/App//app.c...
+Source/App//app.c: In function 'th1':
+Source/App//app.c:94:9: warning: unused variable 'ret' [-Wunused-variable]
+     int ret = 0;
+         ^~~
+Compiling C Source/App//main.c...
+Source/App//main.c: In function 'APP_Main':
+Source/App//main.c:9:9: warning: unused variable 'ret' [-Wunused-variable]
+     int ret = 0;
+         ^~~
+Compiling C Source/App//usim_test.c...
+Compiling C Source/App//uart.c...
+"Generate preset file"
+""
+Ready to sign ./Build/UIS8910DM/App/release/out/App_UIS8910DM_release.bin
+
+Signature successful!

@@ -1,0 +1,67 @@
+{
+    "NVItem": [],
+    "dwFlashType": 1,
+    "dwIsNvBackup": 0,
+    "dwIsOmaDm": 1,
+    "dwIsPreload": 1,
+    "dwMode": 0,
+    "dwOmaDmProductFlag": 0,
+    "pacFiles": [
+        {
+            "cfgType": "PLAIN_FILE",
+            "defaultCheck": 1,
+            "description": "HOST_FDL",
+            "dwAddress": "0x8000C0",
+            "dwCanOmitFlag": 0,
+            "filePath": "./prebuilts/UIS8910DM/fdl1.sign_volte.img",
+            "fixedSize": "0xFF40",
+            "forceCheck": 1,
+            "szFileID": "HOST_FDL",
+            "szFileName": "fdl1.sign.img",
+            "type": "HOST_FDL"
+        },
+        {
+            "cfgType": "PLAIN_FILE",
+            "defaultCheck": 1,
+            "description": "FDL2",
+            "dwAddress": "0x810000",
+            "dwCanOmitFlag": 0,
+            "filePath": "./prebuilts/UIS8910DM/fdl2.sign_volte.img",
+            "fixedSize": "0x30000",
+            "forceCheck": 1,
+            "szFileID": "FDL2",
+            "szFileName": "fdl2.sign.img",
+            "type": "FDL2"
+        },
+        {
+            "cfgType": "PLAIN_FILE",
+            "defaultCheck": 1,
+            "description": "APPIMG",
+            "dwAddress": "0x601E0000",
+            "dwCanOmitFlag": 0,
+            "filePath": "./prebuilts/UIS8910DM/UIS8910DM_release.img",
+            "fixedSize": "0x100000",
+            "forceCheck": 0,
+            "szFileID": "APPIMG",
+            "szFileName": "UIS8910DM_release.img",
+            "type": "CODE"
+        },
+        {
+            "cfgType": "PLAIN_FILE",
+            "defaultCheck": 1,
+            "description": "PRESET",
+            "dwAddress": "0xfe000004",
+            "dwCanOmitFlag": 0,
+            "filePath": "./prebuilts/UIS8910DM/preset.cpio",
+            "fixedSize": "0x0",
+            "forceCheck": 0,
+            "szFileID": "PRESET",
+            "szFileName": "preset.cpio",
+            "type": "CODE"
+        }
+    ],
+    "szPrdAlias": "KingApp",
+    "szPrdName": "UIX8910_MODEM",
+    "szPrdVersion": "8910 MODULE",
+    "szVersion": "BP_R1.0.0"
+}

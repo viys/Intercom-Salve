@@ -1,0 +1,1 @@
+请参考 Source\ModemApp\src\at_cmd_dualsim.c

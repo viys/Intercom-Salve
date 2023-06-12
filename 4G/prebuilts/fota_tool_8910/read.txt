@@ -1,0 +1,10 @@
+在此文件夹下执行cmd，在命令行中执行：
+CreateKingFotaPack.bat 1 1 1 1 lo.pac lo.pac new.pac
+lo.pac：旧的pac包名
+lo.pac：新的pac包名（和旧的是同一个）
+new.pac: 执行命令后生成的fota文件（模块自动升级的文件）
+注：不关心版本号应用名等
+
+添加设备网址：http://123.57.9.22:9988/#/device/index
+账号：18338199817
+设备升级网页：http://123.57.9.22:8108/swagger-ui.html

@@ -1,0 +1,30 @@
+{
+	"_comment": [
+		"This is the configuration file to preset files to pac.",
+		"It contains a list of _files_, and for each file,",
+		"_file_ is the absolute path in target, and _local_file_",
+		"is the path in host. When _local_file_ is relative path,",
+		"it is related to the directory of this configuration file.",
+		"Also @SOURCE_TOP_DIR@ and @BINARY_TOP_DIR@ will be substitued",
+		"to the absolte of current build.",
+		"SOURCE_TOP_DIR is the SDK TOPDIR and BINARY_TOP_DIR is TOPDIR/Build"
+	],
+	"files": [
+		{
+			"file": "/app/system/audio/wait_conv.pcm",
+			"local_file": "mini.pcm"
+		},
+		{
+			"file": "/app/system/audio/end_conv.pcm",
+			"local_file": "mini2.pcm"
+		},
+        {
+			"file": "/app/system/audio/tim60_end.pcm",   
+			"local_file": "tim60_end.pcm"
+		},
+        {
+			"file": "/app/system/audio/busy.pcm",   
+			"local_file": "busy.pcm"
+		}
+	]
+}
