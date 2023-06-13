@@ -1,6 +1,8 @@
 #ifndef __UART_H
 #define __UART_H
 
+#define DBG_LOG 1
+
 /*******************************************************************************
  ** MACROS
  ******************************************************************************/
@@ -8,11 +10,13 @@
 
 #define UART_BUF_MAX_LEN 128
 
-#define U2_RX_SIZE	2048
-#define U2_TX_SIZE	2048
-#define U2_RX_MAX	256
+#define RS485_RX_SIZE	2048
+#define RS485_TX_SIZE	1000
+#define RS485_RX_MAX	256
 
-#define URxNUM		100
+#define URxNUM			100
+
+#define UART_485		UART_2
 
 /* uart control blok */
 typedef struct{
@@ -36,16 +40,13 @@ typedef struct{
 	UCB_URxBuffPtr *URxDataEND;
 }UCB_CB;
 
-extern UCB_CB U2CB;
-extern uint8 U2_RxBuff[U2_RX_SIZE];
+extern UCB_CB RS485CB;
+extern uint8 RS485_RxBuff[RS485_RX_SIZE];
 
 //#define LOG_P(ret,format)   {if(ret!=0){DBG_U2_Send(#format)}}
 //#define LOG_E(format)       DBG_U2_Send(#format)
 
-/* 串口2调试函数 */
-void U2_Send(char *format,...);
-/* 串口2初始化 */
-int Uart2_Init(void);
+
 /* 串口2日志打印函数 */
 void LOG_P(int ret,char *format,...);
 /* 485串口初始化函数(串口三) */
@@ -56,8 +57,10 @@ void rs_485_data_resive(void);
 void rs485_input_detection(void);
 /* 485数据处理函数 */
 void rs485_event_handle(uint8 *data,uint16 datalen);
-/* 串口2数据回调函数 */
-void Uart2EventCb(uint32 eventID, void* pData, uint32 len);
+/* RS485数据回调函数 */
+void RS485EventCb(uint32 eventID, void* pData, uint32 len);
+/* 485数据发送函数 */
+void RS485_Send(char *format,...);
 
 
 #endif /* __UART_H */

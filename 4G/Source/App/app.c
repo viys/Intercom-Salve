@@ -107,17 +107,16 @@ void rs485_handle(void *Param)
     LOG_P(ret,"KING_EventCreate() rs485EH Fail\r\n");
     /* 485串口初始化,115200 */
     rs485_init();
-
+    
     while(1){
 
         /* 获取并清楚标志位 */
         ret = KING_EventGet(rs485EH,1,4000);
         LOG_P(ret,"RS485 resive timeout\r\n");
         if(ret == SUCCESS){
-            KING_Sleep(100);
+            //KING_Sleep(100);
             rs_485_data_resive();
             rs485_input_detection();
-            //U2_Send("th rs485_handle is run\r\n");
         }
     }
 }
