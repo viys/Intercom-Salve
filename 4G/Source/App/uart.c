@@ -127,7 +127,7 @@ int Uart2_Init(void)
     return SUCCESS;
 }
 
-static void u2rx_ptr_init(void)
+void u2rx_ptr_init(void)
 {
 	/* IN指针指向SE指针对结构体数组的0号成员 */
 	U2CB.URxDataIN = &U2CB.URxDataPtr[0];
@@ -137,6 +137,8 @@ static void u2rx_ptr_init(void)
 	U2CB.URxDataEND = &U2CB.URxDataPtr[URxNUM-1];
 	/* 使用 IN 指针指向的SE指针对中的S指针标记第一次接收的起始位置 */
 	U2CB.URxDataIN->start = U2_RxBuff;
+    U2CB.URxDataIN->end = U2_RxBuff;
+
 	/* 积累接收数量清零 */
 	U2CB.URxCounter = 0;
 }
@@ -150,6 +152,9 @@ int rs485_init(void)
     Uart2_Init();
 
     u2rx_ptr_init();
+
+    U2_Send("U2CB.URxDataIN->end - U2CB.URxDataIN->start =%d\r\n",(U2CB.URxDataIN->end - U2CB.URxDataIN->start));
+    U2_Send("&U2_RxBuff[0] - &U2_RxBuff[1] = %d\r\n",&U2_RxBuff[1] - &U2_RxBuff[0]);
 
     return SUCCESS;
 }
@@ -176,29 +181,34 @@ void rs_485_data_resive(void)
     // ret =  ret = KING_UartGetAvailableBytes(UART_2,&availableLen);
     // LOG_P(ret,"KING_UartGetAvailableBytes() UART_2 Fail!\r\n");
     /* 将缓存区数据存入环形队列中 */
-    KING_UartRead(UART_2, (uint8 *)U2CB.URxDataIN, U2_RX_MAX, &readLen);
-    U2_Send("Resive %d byte\r\n");
-    // /* 将本次接收量累加到 URxCounrer */
-    // U2CB.URxCounter += readLen;
-    // /* IN指针指向的结构体中的e指针记录本次接收结束位置 */
-    // U2CB.URxDataIN->end = &U2_RxBuff[U2CB.URxCounter - 1];
-    // /* IN指针后移 */
-    // U2CB.URxDataIN++;
+    KING_UartRead(UART_2, (uint8 *)U2CB.URxDataIN->start, U2_RX_MAX, &readLen);
+    U2_Send("Resive %d byte\r\n",readLen);
     
-    // /* 后移至END标记的位置 */
-    // if(U2CB.URxDataIN == U2CB.URxDataEND){
-    //     /* 回卷,重新指向0号成员 */
-    //     U2CB.URxDataIN = &U2CB.URxDataPtr[0];
-    // }
-    // /* 如果剩余空间量大于等于单次接收最大量 */
-    // if(U2_RX_SIZE - U2CB.URxCounter >= U2_RX_MAX){
-    //     U2CB.URxDataIN->start = &U2_RxBuff[U2CB.URxCounter];
-    // }else{
-    //     /* 回卷,下次的接收位置返回缓冲区的起始位置 */
-    //     U2CB.URxDataIN->start = U2_RxBuff;
-    //     /* 累计值清零 */
-    //     U2CB.URxCounter = 0;
-    // }
+    /* 将本次接收量累加到 URxCounrer */
+    U2CB.URxCounter += readLen;
+    /* IN指针指向的结构体中的e指针记录本次接收结束位置 */
+    U2CB.URxDataIN->end = &U2_RxBuff[U2CB.URxCounter - 1];
+
+    /* IN指针后移 */
+    U2CB.URxDataIN++;
+    U2_Send("Total %d byte\r\n",U2CB.URxCounter);
+    /* 后移至END标记的位置 */
+    if(U2CB.URxDataIN == U2CB.URxDataEND){
+        /* 回卷,重新指向0号成员 */
+        U2CB.URxDataIN = &U2CB.URxDataPtr[0];
+    }
+    /* 如果剩余空间量大于等于单次接收最大量 */
+    if(U2_RX_SIZE - U2CB.URxCounter >= U2_RX_MAX){
+        U2CB.URxDataIN->start = &U2_RxBuff[U2CB.URxCounter];
+        /* 非必须 */
+        U2CB.URxDataIN->end = &U2_RxBuff[U2CB.URxCounter];
+    }else{
+        /* 回卷,下次的接收位置返回缓冲区的起始位置 */
+        U2CB.URxDataIN->start = U2_RxBuff;
+        /* 累计值清零 */
+        U2CB.URxCounter = 0;
+    }
+
 }
 
 /* 串口3输入检测 */
@@ -207,21 +217,22 @@ void rs485_input_detection(void)
 	if(U2CB.URxDataOUT != U2CB.URxDataIN){
 		/* 命令处理 */
 		rs485_event_handle(U2CB.URxDataOUT->start,U2CB.URxDataOUT->end - U2CB.URxDataOUT->start + 1);
+        U2_Send("U2CB.URxDataOUT->end - U2CB.URxDataOUT->start + 1 = %d\r\n",U2CB.URxDataOUT->end - U2CB.URxDataOUT->start + 1);
 		U2CB.URxDataOUT ++;
 		
+        /* 数据回卷 */
 		if(U2CB.URxDataOUT == U2CB.URxDataEND){
 			U2CB.URxDataOUT = &U2CB.URxDataPtr[0];
-		}
-	
+		}	
 	}
 }
 
-/* Bootloader命令行事件处理 */
+/* 485命令行事件处理 */
 void rs485_event_handle(uint8 *data,uint16 datalen)
 {
     if(datalen!=0){
         KING_UartWrite(UART_2,data,datalen,&writeLen);
-        U2_Send("rs485_event_handle() is run\r\n");
+        U2_Send("\r\nrs485_event_handle() is run,datalen: %d\r\n",datalen);
     }
 }
 

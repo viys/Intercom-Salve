@@ -9,7 +9,7 @@
 #define UART_4       (4)
 #define UART_5       (5)
 
-// UART event type. NOTIFY_FUNÖĞÊ¹ÓÃ
+// UART event type. NOTIFY_FUNä¸­ä½¿ç”¨
 #define UART_EVT_DATA_TO_READ      (0)
 #define UART_EVT_WRITE_COMPLETE    (1)
 #define UART_EVT_INIT_COMPLETE     (2)
@@ -89,35 +89,35 @@ typedef struct
 
 
 /**
- * uart³õÊ¼»¯£¬ÅäÖÃuartÏà¹Ø²ÎÊı
- * @param[in]  id ĞèÒª³õÊ¼»¯µÄuart id£¬Ö§³ÖÄÄĞ©id£¬Çë²é¿´¶ÔÓ¦µÄÓ²¼ş¹æ¸ñÊé
- * @param[in]  cfg ĞèÒªÅäÖÃµÄuart²ÎÊı
+ * uartåˆå§‹åŒ–ï¼Œé…ç½®uartç›¸å…³å‚æ•°
+ * @param[in]  id éœ€è¦åˆå§‹åŒ–çš„uart idï¼Œæ”¯æŒå“ªäº›idï¼Œè¯·æŸ¥çœ‹å¯¹åº”çš„ç¡¬ä»¶è§„æ ¼ä¹¦
+ * @param[in]  cfg éœ€è¦é…ç½®çš„uartå‚æ•°
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_UartInit(uint32 id, UART_CONFIG_S* cfg);
 
 /**
- * uart¶ÁÊı¾İ
- * @param[in]  id ´ÓÄÄ¸öuart¶ÁÊı¾İ
- * @param[in]  pTargetBuf ¶ÁÈ¡µÄÊı¾İ´æ·ÅµÄbuffer
- * @param[in]  BufLen Òª¶ÁÈ¡Êı¾İµÄ³¤¶È
- * @param[out]  pBytesRead Êµ¼Ê¶ÁÈ¡Êı¾İµÄ³¤¶È
- * @return >= 0 Êµ¼Ê¶ÁÈ¡µÄÊı¾İ³¤¶È,  -1 FAIL
+ * uartè¯»æ•°æ®
+ * @param[in]  id ä»å“ªä¸ªuartè¯»æ•°æ®
+ * @param[in]  pTargetBuf è¯»å–çš„æ•°æ®å­˜æ”¾çš„buffer
+ * @param[in]  BufLen è¦è¯»å–æ•°æ®çš„é•¿åº¦
+ * @param[out]  pBytesRead å®é™…è¯»å–æ•°æ®çš„é•¿åº¦
+ * @return >= 0 å®é™…è¯»å–çš„æ•°æ®é•¿åº¦,  -1 FAIL
  */
 int KING_UartRead(uint32 id, uint8* pTargetBuf,uint32 BufLen, uint32* pBytesRead);
 
 /**
- * uartĞ´Êı¾İ
- * @param[in]  id ÒªÍùÄÄ¸öuartĞ´Êı¾İ
- * @param[in]  pSourceBuf Ğ´Êı¾İ´æ·ÅµÄbuffer
- * @param[in]  BufLen ÒªĞ´Êı¾İµÄ³¤¶È
- * @param[out]  pBytesWrite Êµ¼ÊĞ´Êı¾İµÄ³¤¶È
- * @return >=0 Êµ¼ÊĞ´ÈëµÄÊı¾İ³¤¶È,  -1 FAIL
+ * uartå†™æ•°æ®
+ * @param[in]  id è¦å¾€å“ªä¸ªuartå†™æ•°æ®
+ * @param[in]  pSourceBuf å†™æ•°æ®å­˜æ”¾çš„buffer
+ * @param[in]  BufLen è¦å†™æ•°æ®çš„é•¿åº¦
+ * @param[out]  pBytesWrite å®é™…å†™æ•°æ®çš„é•¿åº¦
+ * @return >=0 å®é™…å†™å…¥çš„æ•°æ®é•¿åº¦,  -1 FAIL
  */
 int KING_UartWrite(uint32 id,uint8* pSourceBuf,uint32 BufLen,uint32* pBytesWrite);
 
 /**
- * Çå¿ÕUART½ÓÊÕ»º³åÇøÊı¾İ¡£
+ * æ¸…ç©ºUARTæ¥æ”¶ç¼“å†²åŒºæ•°æ®ã€‚
  *
  * @param[in] id UART ID.
  *
@@ -126,18 +126,18 @@ int KING_UartWrite(uint32 id,uint8* pSourceBuf,uint32 BufLen,uint32* pBytesWrite
 int KING_UartPurge(uint32 id);
 
 /**
- * ²éÑ¯µ±Ç°UART½ÓÊÕ»º³åÇøÊÕµ½µÄÊı¾İ×Ö½Ú³¤¶È¡£
+ * æŸ¥è¯¢å½“å‰UARTæ¥æ”¶ç¼“å†²åŒºæ”¶åˆ°çš„æ•°æ®å­—èŠ‚é•¿åº¦ã€‚
  *
  * @param[in] id UART ID.
- * @param[out] pAvailableBytes µ±Ç°½ÓÊÕ»º³åÇø´æ·ÅÊı¾İµÄ×Ö½Ú³¤¶È
+ * @param[out] pAvailableBytes å½“å‰æ¥æ”¶ç¼“å†²åŒºå­˜æ”¾æ•°æ®çš„å­—èŠ‚é•¿åº¦
  *
- * @return >=0 µ±Ç°»º³åÇøµÄÊı¾İ³¤¶È  -1 FAIL
+ * @return >=0 å½“å‰ç¼“å†²åŒºçš„æ•°æ®é•¿åº¦  -1 FAIL
  */
 int KING_UartGetAvailableBytes(uint32 id, uint32* pAvailableBytes);
 
 /**
- * uartÈ¥³õÊ¼»¯
- * @param[in]  id ĞèÒªÈ¥³õÊ¼»¯µÄuart id
+ * uartå»åˆå§‹åŒ–
+ * @param[in]  id éœ€è¦å»åˆå§‹åŒ–çš„uart id
  * @return 0 SUCCESS  -1 FAIL
  */
 int KING_UartDeinit(uint32 id);

@@ -3,10 +3,10 @@ Compiling C Source/App//main.c...
 Compiling C Source/App//usim_test.c...
 Compiling C Source/App//uart.c...
 Source/App//uart.c: In function 'rs_485_data_resive':
-Source/App//uart.c:178:12: warning: unused variable 'availableLen' [-Wunused-variable]
+Source/App//uart.c:173:12: warning: unused variable 'availableLen' [-Wunused-variable]
      uint32 availableLen = 0;
             ^~~~~~~~~~~~
-Source/App//uart.c:176:9: warning: unused variable 'ret' [-Wunused-variable]
+Source/App//uart.c:171:9: warning: unused variable 'ret' [-Wunused-variable]
      int ret = 0;
          ^~~
 At top level:
@@ -15,6 +15,6 @@ Source/App//uart.c:33:19: warning: 'msgHandle' defined but not used [-Wunused-va
                    ^~~~~~~~~
 "Generate preset file"
 ""
-Ready to sign ./Build/UIS8910DM/App/release/out/App_UIS8910DM_release.bin
+Ready to sign ./Build/UIS8910DM/AppVolte/release/out/AppVolte_UIS8910DM_release.bin
 
 Signature successful!

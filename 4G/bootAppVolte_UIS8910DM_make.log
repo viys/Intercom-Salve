@@ -33,5 +33,7 @@ Compiling C Source/std/src/memcmp.c...
 Compiling C Source/std/src/strlen.c...
 Compiling C Source/std/src/memmove.c...
 "Generate preset file"
-make/core/genImg_UIS8910DM.mk:45: recipe for target 'PRESET_GEN' failed
-make: *** [PRESET_GEN] Interrupt
+""
+Ready to sign ./Build/UIS8910DM/bootAppVolte/release/out/bootAppVolte_UIS8910DM_release.bin
+
+Signature successful!

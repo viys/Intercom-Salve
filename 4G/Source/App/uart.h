@@ -12,7 +12,7 @@
 #define U2_TX_SIZE	2048
 #define U2_RX_MAX	256
 
-#define URxNUM		10
+#define URxNUM		100
 
 /* uart control blok */
 typedef struct{

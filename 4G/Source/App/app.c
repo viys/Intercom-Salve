@@ -92,6 +92,7 @@ void time1_th(uint32 tmrId)
     {
         //U2_Send("time1 running\r\n");        
         KING_Sleep(1000);
+        
     }
     
     
@@ -116,7 +117,7 @@ void rs485_handle(void *Param)
             KING_Sleep(100);
             rs_485_data_resive();
             rs485_input_detection();
-            U2_Send("th rs485_handle is run\r\n");
+            //U2_Send("th rs485_handle is run\r\n");
         }
     }
 }
@@ -126,7 +127,7 @@ void AppTaskStart(void *param)
     int ret = 0;
 
     /* 创建485信息处理任务 */
-    ret = KING_ThreadCreate("rs485_handle",KING_Thread_Config(rs485_handle,NULL,3,3072),&RS485ThreadH);
+    ret = KING_ThreadCreate("rs485_handle",KING_Thread_Config(rs485_handle,NULL,3,5000),&RS485ThreadH);
     LOG_P(ret,"KING_ThreadCreate() th4 Fail!\r\n");
 
     /* 创建定时器 */
