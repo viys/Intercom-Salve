@@ -8,6 +8,7 @@
 #include "KingUart.h"
 #include "app.h"
 #include "uart.h"
+#include "io.h"
 
 uint8 U2_TxBuff[500];
 uint8 RS485_RxBuff[RS485_RX_SIZE];
@@ -163,7 +164,14 @@ void RS485_Send(char *format,...)
 	/* 释放lostdata */
 	va_end(listdata);
     /* 发送缓冲区数据 */
+
+#if RS485_AUTO
+    KING_GpioSet(GPIO_15,1);
+#endif
     KING_UartWrite(UART_485,RS485_TxBuff,strlen((const char*)RS485_TxBuff),&writeLen);
+#if RS485_AUTO
+    KING_GpioSet(GPIO_15,0);
+#endif
     memset(RS485_TxBuff,0x00,RS485_TX_SIZE);
 }
 

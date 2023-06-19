@@ -8,6 +8,8 @@
 #include "KingPlat.h"
 #include "KingRtos.h"
 #include "KingUart.h"
+#include "KingGpio.h"
+
 
 extern uint32 writeLen;
 extern THREAD_ATTR_S threadAttr;
@@ -15,7 +17,9 @@ extern THREAD_ATTR_S threadAttr;
 extern THREAD_HANDLE AppTaskStartThreadH;
 
 /* 互斥锁 */
-extern  EVENT_HANDLE rs485EH;
+extern EVENT_HANDLE rs485EH;
+extern EVENT_HANDLE INPUT8EH;
+extern EVENT_HANDLE INPUT10EH;
 
 /* 线程指针配置函数 */
 THREAD_ATTR_S* KING_Thread_Config(THREAD_ENTRY_FUN fun,void* param,THREAD_PRIORIT_E priority,uint32 stackSize);

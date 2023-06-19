@@ -5,6 +5,7 @@ int main(void)
 {
 	while(1){
 		USART_Config(USART_2,USART_MODE_EXTI,115200);
+		USART_Config();
 		
 	}
 }
